@@ -40,13 +40,13 @@
             <router-link class="nav-link active stretch" aria-current="page" :to="{ name: 'userlogin' }">登陆</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link stretch" :to="{ name: 'register' }">注册</router-link>
+            <router-link class="nav-link stretch" :to="{ name: 'registerview' }">注册</router-link>
           </li>
         </ul>
         <ul class="navbar-nav" v-else >
           <li class="nav-item">
             <router-link class="nav-link active stretch" 
-            aria-current="page" :to="{ name: 'personalinfo' ,params:{userID:$store.state.user.id}}">
+            aria-current="page" :to="{ name: 'personalinfo',params:{userID:$store.state.user.username}}">
             ID:{{ $store.state.user.username }}</router-link>
           </li>
           <li class="nav-item">

@@ -36,7 +36,7 @@
             </button>
           </div>
           <label for="" class="zu3 padd zu2">
-            <router-link :to="{ name: 'register' }" style="text-decoration: none">注册新用户</router-link>
+            <router-link :to="{ name: 'registerview' }" style="text-decoration: none">注册新用户</router-link>
           </label>
         </form>
         <div class="alert alert-warning"> {{ message }}</div>
@@ -61,7 +61,7 @@ export default {
     let message = ref('');
 
     const login = () => {
-      message.value="";
+      message.value = "";
       store.dispatch("login", {
         username: username.value,
         password: password.value,

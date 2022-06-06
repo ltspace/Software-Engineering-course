@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import UserLoginView from '../views/UserLogin.vue'
 import AdminLoginView from '../views/AdminLogin.vue'
 import ContactUs from '../views/ContactUs'
-import UserRegisterView from '../views/UserRegister.vue'
+import UserRegister from '../views/UserRegister.vue'
 import AnimalShow from '../views/AnimalShow.vue'
 import ImproveInfo from '../views/ImproveInfo.vue'
 import ChangePwd from '../views/ChangePwd.vue'
@@ -44,9 +44,9 @@ const routes = [
     component: ContactUs
   },
   {
-    path: '/register/',
-    name: 'register',
-    component: UserRegisterView
+    path: '/registerview/',
+    name: 'registerview',
+    component: UserRegister
   },
   {
     path: '/show/',

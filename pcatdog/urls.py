@@ -20,6 +20,7 @@ import os
 # sys.path.append("..")
 # from ..acatdog.urls import urls as login
 from acatdog.views.getInfo import GetInfo
+from acatdog.views.register import PlayerView
 from django.urls import path, include
 from re import template
 from tempfile import tempdir
@@ -30,12 +31,10 @@ from django.views.generic import TemplateView
 from rest_framework import routers
 
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="index.html")),
     path('api/', include('acatdog.urls.urls')),
-    path('getinfo/', GetInfo.as_view(), name="myspace_getinfo"),
+    path('getinfo/', GetInfo.as_view(), name="getinfo"),
+    path('register/', PlayerView.as_view(), name="register"),
 ]
-
