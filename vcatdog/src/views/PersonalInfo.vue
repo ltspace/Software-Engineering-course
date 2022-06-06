@@ -61,7 +61,7 @@
             </div>
             <div class="form-group zu2">
               <label for="exampleFormControlInput1" class="form-label">地址：</label>
-              <input v-model="addr" type="text" class="form-control" :placeholder="$store.state.user.addre" />
+              <input v-model="addr" type="text" class="form-control" :placeholder="$store.state.user.addr" />
             </div>
             <div class="form-group zu2">
               <label for="exampleFormControlInput1" class="form-label">职业：</label>
@@ -91,11 +91,13 @@
           </div>
         </form>
         <button type="submit" class="btn btn-primary col-md-5" style="margin-left:25px;">
-              返回主页面
-            </button>
+          返回主页面
+        </button>
       </div>
     </div>
+    
   </div>
+  <div class="alert alert-warning"> {{ message }}</div>
 </template>
 
 <script>
@@ -130,10 +132,11 @@ export default {
           job: job.value,
         },
         success (resp) {
-          if (resp.result === "success") {
-            message.value = resp.result;
+          if (resp.result === "1") {
+            message.value = "更新成功！";
+
           } else {
-            message.value = resp.result;
+            message.value = "更新失败！请检查您的个人信息！";
           }
         }
       })
@@ -146,6 +149,7 @@ export default {
       email,
       addr,
       job,
+      message,
       userinfoselfchge,
     }
   }

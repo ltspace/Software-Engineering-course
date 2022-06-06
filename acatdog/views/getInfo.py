@@ -18,7 +18,12 @@ class GetInfo(APIView):
                 'username': player.user.username,
                 # 'id': player.id,
                 # 'username': player.user.username,
-                # 'photo': player.photo,
+                'photo': player.photo,
+                'addr':player.addr,
+                'phonum':player.phonum,
+                'email':player.email,
+                'job':player.job,
+                'crepoint':player.crepoint,
                 # 'followerCount': player.followerCount,
                 # 'is_followed': Follow.objects.filter(source=me_id, target=user_id).exists()
             })

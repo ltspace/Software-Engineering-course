@@ -19,16 +19,15 @@ class UserInfoSelfChge(APIView):
         addr = data.get("addr", "").strip()
         job = data.get("job", "").strip()
         
-        user = User(username=username)
-        
+        obj = User.objects.get(username=username)
 
-        ok = UserInfo.objects.filter(user=user).update(phonum=phonum,email=email,addr=addr,job=job)
+        ok = UserInfo.objects.filter(id=obj.userinfo.id).update(phonum=phonum,email=email,addr=addr,job=job)
 
         # user.set_password(password)
         # user.save()
         # UserInfo.objects.create(user=user, photo="https://img2.baidu.com/it/u=2161949891,656888789&fm=26&fmt=auto")
         return Response({
-            'result': "success"+str(ok)
+            'result': str(ok)
         })
 
 

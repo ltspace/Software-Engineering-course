@@ -5,7 +5,7 @@ const ModuleUser = {
   state: {
     id: "",
     username: "",
-    addre: "",
+    addr: "",
     phonum:"",
     sex:"",
     job:"",
@@ -24,6 +24,13 @@ const ModuleUser = {
           state.id = user.id;
           state.username = user.username;
           state.photo = user.photo;
+          state.crepoint=user.crepoint;
+          state.addr=user.addr;
+          state.phonum=user.phonum;
+          state.sex=user.sex;
+          state.age=user.age;
+          state.email=user.email;
+          state.job=user.job;
           // state.followerCount = user.followerCount;
           state.access = user.access;
           state.refresh = user.refresh;
