@@ -20,6 +20,7 @@ import AnimalModify from '../views/AnimalModify.vue'
 import UserCheck from '../views/UserCheck.vue'
 import UserCheck1 from '../views/UserCheck1.vue'
 import UserModify from '../views/UserModify.vue'
+import AniShow from '../views/AniShow.vue';
 
 
 const routes = [
@@ -131,11 +132,11 @@ const routes = [
     name: 'userModify',
     component: UserModify
   },
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
-  // },
+  {
+    path: '/anishow',
+    name: 'anishow',
+    component: AniShow
+  },
   // {
   //   path: '/',
   //   name: 'home',

@@ -17,9 +17,9 @@
               <label class="" slogan>个人信息</label>
             </div>
             <div class="mb-3 row">
-              <label for="staticEmail" class="col-sm-4 col-form-label">用户ID：</label>
+              <label for="staticEmail" class="col-sm-4 col-form-label">用户ID:</label>
               <div class="col-sm-5">
-                {{ $store.state.user.username }}
+                <!-- {{ $store.state.user.id }} -->
               </div>
             </div>
 
@@ -91,10 +91,14 @@
 
 export default {
   name: 'PersonalInfo',
-  setup()
-  {
-    // const store = useStore();
-  }
+  // setup()
+  // {
+  //   const store = useStore();
+  //   return {
+  //     store,
+  //   }
+  // }
+  
 }
 </script>
 

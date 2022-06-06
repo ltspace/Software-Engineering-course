@@ -10,19 +10,71 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse " id="navbarText">
+      <div class="collapse navbar-collapse " id="navbarText" v-if="!$store.state.user.is_login">
+        <ul class=" navbar-nav  me-auto center">
+          <li class="nav-item distent">
+            <router-link class="nav-link active stretch" aria-current="page" :to="{ name: 'home' }">主页</router-link>
+          </li>
+          <!-- <div v-if="!$store.state.user.is_login"> -->
+          <li class="nav-item">
+            <router-link class="nav-link stretch" :to="{ name: 'userlogin' }">我要领养</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link stretch" :to="{ name: 'userlogin' }">我要救助</router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link class="nav-link stretch" :to="{ name: 'show' }">动物展示</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link stretch" :to="{ name: 'contactus' }">联系我们</router-link>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <router-link class="nav-link active stretch" aria-current="page" :to="{ name: 'userlogin' }">登陆
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link stretch" :to="{ name: 'registerview' }">注册</router-link>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse " id="navbarText" v-else>
         <ul class=" navbar-nav  me-auto center">
           <li class="nav-item distent">
             <router-link class="nav-link active stretch" aria-current="page" :to="{ name: 'home' }">主页</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link stretch" :to="{ name: '' }">我要领养</router-link>
+            <router-link class="nav-link stretch" :to="{ name: 'anishow' }">我要领养</router-link>
           </li>
-          <li class="nav-item dropdown">
-            <router-link class="nav-link stretch dropdown-toggle" :to="{ name: '' }" id="navbarDropdownMenuLink"
+          <!-- <li class="nav-item dropdown">
+            <nav class="nav-link stretch dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              我要救助
+            </nav>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-bs-toggle="dropdown">
+              <li>
+                <a class="dropdown-item stretch smallcard">填写新救助单
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item stretch smallcard">查看救助单
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link stretch" :to="{ name: 'show' }">动物展示</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link stretch" :to="{ name: 'contactus' }">联系我们</router-link>
+          </li> -->
+            <li class="nav-item dropdown">
+            <div class="nav-link stretch dropdown-toggle" id="navbarDropdownMenuLink"
               role="button" data-bs-toggle="dropdown" aria-expanded="false">
               我要救助
-            </router-link>
+            </div>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-bs-toggle="dropdown">
               <li><a class="dropdown-item stretch smallcard" href="#">填写新救助单</a></li>
               <li><a class="dropdown-item stretch smallcard" href="#">查看救助单</a></li>
@@ -35,45 +87,44 @@
             <router-link class="nav-link stretch" :to="{ name: 'contactus' }">联系我们</router-link>
           </li>
         </ul>
-        <ul class="navbar-nav" v-if="!$store.state.user.is_login" >
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link class="nav-link active stretch" aria-current="page" :to="{ name: 'userlogin' }">登陆</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link stretch" :to="{ name: 'registerview' }">注册</router-link>
-          </li>
-        </ul>
-        <ul class="navbar-nav" v-else >
-          <li class="nav-item">
-            <router-link class="nav-link active stretch" 
+            <!-- <router-link class="nav-link active stretch" 
             aria-current="page" :to="{ name: 'personalinfo',params:{userID:$store.state.user.username}}">
-            ID:{{ $store.state.user.username }}</router-link>
+            ID:{{ $store.state.user.username }}</router-link> -->
+            <router-link class="nav-link stretch" :to="{ name: 'personalinfo' }">
+              欢迎你:
+              {{ $store.state.user.username }}
+            </router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link stretch" style="cursor:pointer" @click="logout">退出</a>
           </li>
         </ul>
       </div>
+
+
     </div>
   </nav>
+
 </template>
 
 <script>
 import { useStore } from 'vuex';
 
 export default {
-    name: "UNavBar",
-    setup() {
-      const store = useStore();
-      const logout = () => {
-        store.commit('logout');
-      };
+  name: "UNavBar",
+  setup () {
+    const store = useStore();
+    const logout = () => {
+      store.commit('logout');
+    };
 
-      return {
-        logout,
-        
-      }
+    return {
+      logout,
+
     }
+  }
 }
 
 </script>
@@ -122,5 +173,4 @@ nav.navbar.navbar-expand-lg.bg-light {
   padding-left: 1em;
   padding-right: 1em;
 }
-
 </style>
