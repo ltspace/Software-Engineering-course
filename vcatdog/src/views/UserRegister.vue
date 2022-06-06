@@ -63,7 +63,7 @@
 <script>
 import { ref } from 'vue';
 import { useStore } from 'vuex';
-// import router from '@/router/index';
+import router from '@/router/index';
 import $ from 'jquery';
 
 export default {
@@ -91,7 +91,7 @@ export default {
               username: username.value,
               password: password.value,
               success() {
-                // router.push({name: 'userlist'});
+                router.push({name: 'home'});
               },
               error() {
                 message.value = "系统异常，请稍后重试";
