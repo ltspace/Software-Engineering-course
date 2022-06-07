@@ -15,7 +15,6 @@
           <li class="nav-item distent">
             <router-link class="nav-link active stretch" aria-current="page" :to="{ name: 'home' }">主页</router-link>
           </li>
-          <!-- <div v-if="!$store.state.user.is_login"> -->
           <li class="nav-item">
             <router-link class="nav-link stretch" :to="{ name: 'userlogin' }">我要领养</router-link>
           </li>
@@ -48,38 +47,21 @@
           <li class="nav-item">
             <router-link class="nav-link stretch" :to="{ name: 'anishow' }">我要领养</router-link>
           </li>
-          <!-- <li class="nav-item dropdown">
-            <nav class="nav-link stretch dropdown-toggle" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              我要救助
-            </nav>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-bs-toggle="dropdown">
-              <li>
-                <a class="dropdown-item stretch smallcard">填写新救助单
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item stretch smallcard">查看救助单
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link stretch" :to="{ name: 'show' }">动物展示</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link stretch" :to="{ name: 'contactus' }">联系我们</router-link>
-          </li> -->
+
           <li class="nav-item dropdown">
-            <div class="nav-link stretch dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+            <div class="nav-link stretch dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
               我要救助
             </div>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-bs-toggle="dropdown">
-              <li><a class="dropdown-item stretch smallcard" href="#">填写新救助单</a></li>
-              <li><a class="dropdown-item stretch smallcard" href="#">查看救助单</a></li>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item stretch smallcard" href="/#/fillhelpform/">填写新救助单</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item stretch smallcard" href="/#/viewhelpform/">查看救助单</a></li>
             </ul>
           </li>
+
           <li class="nav-item">
             <router-link class="nav-link stretch" :to="{ name: 'show' }">动物展示</router-link>
           </li>
@@ -89,11 +71,8 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <!-- <router-link class="nav-link active stretch" 
-            aria-current="page" :to="{ name: 'personalinfo',params:{userID:$store.state.user.username}}">
-            ID:{{ $store.state.user.username }}</router-link> -->
             <router-link class="nav-link stretch" :to="{ name: 'personalinfo' }">
-              欢迎你:
+              <img :src="$store.state.user.photo" class="mb-3" style="width:50px;height:50px;border-radius: 100%">
               {{ $store.state.user.username }}
             </router-link>
           </li>
@@ -122,11 +101,10 @@ export default {
 
     return {
       logout,
-
     }
-  }
-}
+  },
 
+};
 </script>
 
 <style scoped>

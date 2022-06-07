@@ -24,6 +24,7 @@ class GetInfo(APIView):
                 'email':player.email,
                 'job':player.job,
                 'crepoint':player.crepoint,
+                'sex':player.sex,
                 # 'followerCount': player.followerCount,
                 # 'is_followed': Follow.objects.filter(source=me_id, target=user_id).exists()
             })

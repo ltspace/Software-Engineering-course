@@ -33,24 +33,46 @@
             </div>
 
 
-            <div class="mb-3">
-              <label for="formFile" class="form-label">头像</label>
-              <input class="form-control" type="file" id="formFile">
+            <!-- <div class="mb-3"> -->
+            <!-- <label for="formFile" class="form-label">头像</label> -->
+            <!-- <input class="form-control" type="file" id="formFile"> -->
+            <!-- </div> -->
+            <div class="media">
+              <label for="exampleFormControlInput1" class="form-label">头像:</label>
+              <img :src="$store.state.user.photo" class="mb-3" style="width:50px;height:50px;border-radius: 100%;margin-left: 50px;">
+              <div class="media-body">
+                <input v-model="photo" type="text" class="form-control" :placeholder="$store.state.user.photo" />
+              </div>
             </div>
 
-            <div class="form-group zu2">
+            <div class="form-group zu2" id="sex" v-if="$store.state.user.sex=='男'" style="margin-top:10px">
               <label for="formFile" class="form-label">性别:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                  value="option1">
+                  value="1" checked>
                 <label class="form-check-label" for="inlineRadio1">男</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                  value="option2">
+                  value="2">
                 <label class="form-check-label" for="inlineRadio2">女</label>
               </div>
             </div>
+
+            <div class="form-group zu2" id="sex" v-else style="margin-top:10px">
+              <label for="formFile" class="form-label">性别:&emsp;&emsp;</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                  value="1" >
+                <label class="form-check-label" for="inlineRadio1">男</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                  value="2" checked>
+                <label class="form-check-label" for="inlineRadio2">女</label>
+              </div>
+            </div>
+
             <div class="form-group zu2">
               <label for="exampleFormControlInput1" class="form-label">电话：</label>
               <input v-model="phonum" type="text" class="form-control" :placeholder="$store.state.user.phonum" />
@@ -74,14 +96,6 @@
                   :placeholder="$store.state.user.crepoint" disabled
                   style="text-align:center; font-weight:border;letter-spacing: 3px;">
               </div>
-              <!-- <label for="staticEmail" class="col-sm-4 col-form-label">已领养动物：</label>
-              <div class="col-sm-5">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="10只">
-              </div>
-              <label for="staticEmail" class="col-sm-4 col-form-label">已救助动物：</label>
-              <div class="col-sm-5">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="1只">
-              </div> -->
             </div>
           </fieldset>
           <div class="container-fluid" style="text-align: center">
@@ -90,12 +104,10 @@
             </button>
           </div>
         </form>
-        <button type="submit" class="btn btn-primary col-md-5" style="margin-left:25px;">
-          返回主页面
-        </button>
+        <router-link class="btn btn-primary col-md-5" :to="{ name: 'home' }" role="button" style="margin-left:25px;">返回主页面</router-link>
       </div>
     </div>
-    
+
   </div>
   <div class="alert alert-warning"> {{ message }}</div>
 </template>
@@ -117,6 +129,17 @@ export default {
     let addr = ref('');
     let job = ref('');
     let message = ref('');
+    let photo = ref('');
+    var selectedSex = $('#sex input:radio:checked').val();
+    let sex = "男";
+    if (selectedSex==1)
+    {
+      sex = "男";
+    }
+    else 
+    {
+      sex = "女";
+    }
 
     const userinfoselfchge = () => {
       message.value = "";
@@ -126,15 +149,25 @@ export default {
         data: {
           // id: id,
           username: username,
+          sex: sex,
           phonum: phonum.value,
           email: email.value,
           addr: addr.value,
           job: job.value,
+          photo: photo.value,
         },
         success (resp) {
           if (resp.result === "1") {
-            message.value = "更新成功！";
-
+            
+            if(phonum!=null&&email!=null&&addr!=null&&job!=null)
+            {
+              store.state.user.crepoint=1;
+              message.value = "更新成功!您的信用积分为1!";
+            }
+            else{
+              store.state.user.crepoint=0;
+              message.value = "更新成功!存在部分必要个人领养信息未填,您的信用积分为0!";
+            }
           } else {
             message.value = "更新失败！请检查您的个人信息！";
           }
@@ -144,12 +177,14 @@ export default {
 
     return {
       // id,
+      sex,
       username,
       phonum,
       email,
       addr,
       job,
       message,
+      photo,
       userinfoselfchge,
     }
   }

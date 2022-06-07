@@ -18,10 +18,11 @@ class UserInfoSelfChge(APIView):
         email = data.get("email", "").strip()
         addr = data.get("addr", "").strip()
         job = data.get("job", "").strip()
-        
+        photo = data.get("photo", "").strip()
+        sex = data.get("sex", "").strip()
         obj = User.objects.get(username=username)
 
-        ok = UserInfo.objects.filter(id=obj.userinfo.id).update(phonum=phonum,email=email,addr=addr,job=job)
+        ok = UserInfo.objects.filter(id=obj.userinfo.id).update(sex=sex,phonum=phonum,photo=photo,email=email,addr=addr,job=job)
 
         # user.set_password(password)
         # user.save()

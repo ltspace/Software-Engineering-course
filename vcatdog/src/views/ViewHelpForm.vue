@@ -4,7 +4,7 @@
    <div class="mb-3 row">
     <label class="" slogan>查看救助单</label>
     </div>
-  <span class="badge text-bg-primary">动物ID：</span>
+  <span class="badge text-bg-primary">动物ID:</span>
 <span class="badge text-bg-info">002</span>
 
   <span class="badge text-bg-primary">领养情况</span>

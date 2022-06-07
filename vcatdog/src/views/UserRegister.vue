@@ -23,7 +23,7 @@
               <input type="text" class="form-control" placeholder="邮箱" />
             </div> -->
             <div class="form-group zu2">
-              <input v-model="password" type="password" class="form-control" placeholder="6-16位密码，区分大小写" />
+              <input v-model="password" type="password" class="form-control" placeholder="6-16位密码,区分大小写" />
             </div>
             <div class="form-group zu2">
               <input v-model="password_confirm" type="password" class="form-control password_confirm" placeholder="确认密码" />
