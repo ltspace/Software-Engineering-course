@@ -17,19 +17,19 @@ class AdoptInfo(models.Model):
 
 class AnimalInfo(models.Model):
     动物id = models.AutoField(db_column='动物ID', primary_key=True)
-    动物名 = models.CharField(max_length=10 ,default="旺仔")
-    动物类别 = models.CharField(max_length=10)
-    年龄 = models.IntegerField()
-    照片 = models.TextField(blank=True, null=True)
-    品种 = models.CharField(max_length=11)
-    毛色 = models.CharField(max_length=11)
-    性别 = models.CharField(max_length=11)
-    性格 = models.CharField(max_length=11, blank=True, null=True)
-    地址 = models.CharField(max_length=11)
-    是否被领养 = models.CharField(max_length=11)
-    绝育情况 = models.CharField(max_length=11, blank=True, null=True)
-    疫苗情况 = models.CharField(max_length=11, blank=True, null=True)
-    疾病情况 = models.CharField(max_length=11, blank=True, null=True)
+    name = models.CharField(max_length=10 ,default="旺仔")
+    cd = models.CharField(max_length=10)
+    age = models.IntegerField(blank=True, null=True)
+    photo = models.TextField(blank=True, null=True)
+    type = models.CharField(max_length=11)
+    fur = models.CharField(max_length=11)
+    sex = models.CharField(max_length=11)
+    chara = models.CharField(max_length=11, blank=True, null=True)
+    addr = models.CharField(max_length=11)
+    is_adopt = models.CharField(max_length=11,default="否")
+    jveyu = models.CharField(max_length=11, blank=True, null=True)
+    vacc = models.CharField(max_length=11, blank=True, null=True)
+    ill = models.CharField(max_length=11, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -39,9 +39,9 @@ class AnimalInfo(models.Model):
 class AssistInfo(models.Model):
     动物id = models.IntegerField(db_column='动物ID')
     救助日期 = models.DateTimeField()
-    救助单编号 = models.AutoField(primary_key=True)
-    用户id = models.IntegerField(db_column='用户ID')  # Field name made lowercase.
-    是否可被领养 = models.CharField(max_length=2)
+    救助单编号 = models.AutoField(primary_key=True,default=1)
+    用户名 = models.CharField(db_column='用户名',max_length=20,default="admin")  # Field name made lowercase.
+    是否可被领养 = models.CharField(max_length=10)
 
     class Meta:
         managed = True

@@ -22,6 +22,7 @@ import os
 from acatdog.views.getInfo import GetInfo
 from acatdog.views.register import PlayerView
 from acatdog.views.userinfoselfchge import UserInfoSelfChge
+from acatdog.views.savehelpfrom import SaveAssist
 from django.urls import path, include
 from re import template
 from tempfile import tempdir
@@ -39,6 +40,6 @@ urlpatterns = [
     path('api/', include('acatdog.urls.urls')),
     path('getinfo/', GetInfo.as_view(), name="getinfo"),
     path('register/', PlayerView.as_view(), name="register"),
-    path('userinfoselfchge/', UserInfoSelfChge.as_view(), name="userinfoselfchge"),
+    path('saveassit/', SaveAssist.as_view(), name="saveassit"),
     
 ]

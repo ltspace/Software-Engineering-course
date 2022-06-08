@@ -20,22 +20,22 @@
             <div class="form-group" id="sex">
               <label for="formFile" class="form-label">性别:&emsp;&emsp;&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="1">
                 <label class="form-check-label" for="inlineRadio1">公</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="2">
                 <label class="form-check-label" for="inlineRadio2">母</label>
               </div>
             </div>
             <div class="form-group" id="cd">
               <label for="formFile" class="form-label">动物类别:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="1">
                 <label class="form-check-label" for="inlineRadio1">猫</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="2">
                 <label class="form-check-label" for="inlineRadio2">狗</label>
               </div>
             </div>
@@ -59,12 +59,12 @@
             <div class="form-group " id="baby">
               <label for="formFile" class="form-label">绝育情况:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio1"
                   value="option1">
                 <label class="form-check-label" for="inlineRadio1">已绝育</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio2"
                   value="option2">
                 <label class="form-check-label" for="inlineRadio2">未绝育</label>
               </div>
@@ -82,17 +82,34 @@
               <label for="exampleFormControlInput1" class="form-label">地址：</label>
               <input v-model="addr" type="text" class="form-control" placeholder="例：山东大学（威海）18号楼312宿舍" />
             </div>
+            <div class="form-group " id="can_adopt">
+              <label for="formFile" class="form-label">可否被领养:&emsp;&emsp;</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio1"
+                  value="option1">
+                <label class="form-check-label" for="inlineRadio1">可</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio2"
+                  value="option2">
+                <label class="form-check-label" for="inlineRadio2">否</label>
+              </div>
+            </div>
           </fieldset>
           <div class="container-fluid" style="text-align: center">
             <button type="submit" class="btn btn-primary col-md-12">
               提交
             </button>
-            <div class="alert alert-warning"> {{ message }}</div>
+            
           </div>
+          
         </form>
+        
       </div>
     </div>
+    
   </div>
+  <div class="alert alert-warning"> {{ message }}</div>
 </template>
 <!-- <script src="..\dist\static\js\jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script> -->
 <script>
@@ -118,11 +135,13 @@ export default {
     let ill = ref('');
     let addr = ref('');
     var selectedSex = $('#sex input:radio:checked').val();
-    var selectedcd = $('#sex input:radio:checked').val();
-    var selectedjveyu = $('#sex input:radio:checked').val();
+    var selectedcd = $('#cd input:radio:checked').val();
+    var selectedjveyu = $('#jveyu input:radio:checked').val();
+    var selectedadopt = $('#can_adopt input:radio:checked').val();
     let sex = "";
     let cd = "";
     let jveyu = "";
+    let can_adopt ="";
     if (selectedSex == 1) {
       sex = "公";
     }
@@ -130,21 +149,27 @@ export default {
       sex = "母";
     }
     if (selectedcd == 1) {
-      sex = "猫";
+      cd = "猫";
     }
     else {
-      sex = "狗";
+      cd = "狗";
     }
     if (selectedjveyu == 1) {
-      sex = "已绝育";
+      jveyu = "已绝育";
     }
     else {
-      sex = "未绝育";
+      jveyu = "未绝育";
+    }
+    if (selectedadopt == 1) {
+      can_adopt = "可";
+    }
+    else {
+      can_adopt = "否";
     }
     const fillhelp = () => {
       message.value = "";
       $.ajax({
-        url: "http://127.0.0.1:8000/userinfoselfchge/",
+        url: "http://127.0.0.1:8000/saveassit/",
         type: "POST",
         data: {
           // id: id,
@@ -160,6 +185,7 @@ export default {
           addr: addr.value,
           sex: sex,
           cd: cd,
+          can_adopt:can_adopt,
           jveyu: jveyu,
         },
         success (resp) {
@@ -186,6 +212,7 @@ export default {
       cd,
       jveyu,
       message,
+      can_adopt,
       fillhelp,
     }
   }

@@ -1,10 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from acatdog.models import AssistInfo
-from acatdog.models import UserInfo
+# from acatdog.models import UserInfo
 from django.contrib.auth.models import User
+import datetime
 
-from pcatdog.acatdog.models import AnimalInfo
+from acatdog.models import AnimalInfo
 
 # 先存动物 后存救助单
 
@@ -25,33 +26,28 @@ class SaveAssist(APIView):
         sex = data.get("sex","").strip()
         cd = data.get("cd","").strip()
         jveyu = data.get("jveyu","").strip()
-
+        can_adopt = data.get("jveyu","").strip()
 
         # 存动物
+        
+        if not cd and can_adopt=="可":
+            return Response({
+                'result': "选择可领养，需要填写您的电话信息，方便领养人与您联系"
+            })
+        if not addr and can_adopt=="可":
+            return Response({
+                'result': "选择可领养，需要填写您的地址，方便领养人与您联系"
+            })
+
         ani=AnimalInfo.objects.create(name=name,photo=photo,fur=fur,age=age,chara=chara,
         type=type,vacc=vacc,ill=ill,addr=addr,sex=sex,cd=cd,jveyu=jveyu)
         
 
         # 存救助表
         obj = User.objects.get(username=username)  # 获取user username
-        # ok = UserInfo.objects.get(id=obj.userinfo.id)
-        ass = AssistInfo.objects.create()
-        # user.set_password(password)
-        # user.save()
-        # UserInfo.objects.create(user=user, photo="https://img2.baidu.com/it/u=2161949891,656888789&fm=26&fmt=auto")
+        ass = AssistInfo.objects.create(动物id=ani.动物id,救助日期=datetime.datetime.now(),用户名=username,是否可被领养=can_adopt)
+
         return Response({
-            'result': str(ani)+str()
+            'result': str(ass)
         })
 
-        # if not username or not password:
-        #     return Response({
-        #         'result': "用户名和密码不能为空"
-        #     })
-        # if password != password_confirm:
-        #     return Response({
-        #         'result': "两个密码不一致",
-        #     })
-        # if User.objects.filter(username=username).exists():
-        #     return Response({
-        #         'result': "用户名已存在"
-        #     })
