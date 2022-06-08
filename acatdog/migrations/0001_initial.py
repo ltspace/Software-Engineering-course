@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                     db_column='用户ID', primary_key=True, serialize=False)),
                 ('领养日期', models.DateTimeField()),
                 ('动物id', models.IntegerField(db_column='动物ID')),
-                ('领养单编号', models.IntegerField()),
+                ('领养单编号', models.AutoField()),
                 ('领养状态', models.CharField(max_length=50)),
                 ('合照', models.TextField(blank=True, null=True)),
             ],
@@ -36,6 +36,7 @@ class Migration(migrations.Migration):
                 ('动物id', models.IntegerField(
                     db_column='动物ID', primary_key=True, serialize=False)),
                 ('动物类别', models.CharField(max_length=10)),
+                ('动物名', models.CharField(default='旺仔', max_length=10)),
                 ('年龄', models.IntegerField()),
                 ('照片', models.TextField(blank=True, null=True)),
                 ('品种', models.CharField(max_length=11)),
@@ -59,7 +60,7 @@ class Migration(migrations.Migration):
                 ('动物id', models.IntegerField(
                     db_column='动物ID', primary_key=True, serialize=False)),
                 ('救助日期', models.DateTimeField()),
-                ('救助单编号', models.IntegerField()),
+                ('救助单编号', models.AutoField()),
                 ('用户id', models.IntegerField(db_column='用户ID')),
                 ('是否可被领养', models.CharField(max_length=2)),
             ],

@@ -5,7 +5,7 @@ from django.db import models
 class AdoptInfo(models.Model):
     用户id = models.IntegerField(db_column='用户ID')
     领养日期 = models.DateTimeField()
-    动物id = models.IntegerField(db_column='动物ID')  # Field name made lowercase.
+    动物id = models.IntegerField(db_column='动物ID') 
     领养单编号 = models.AutoField(primary_key=True)
     领养状态 = models.CharField(max_length=50)
     合照 = models.TextField(blank=True, null=True)
@@ -17,6 +17,7 @@ class AdoptInfo(models.Model):
 
 class AnimalInfo(models.Model):
     动物id = models.IntegerField(db_column='动物ID', primary_key=True)
+    动物名 = models.CharField(max_length=10 ,default="旺仔")
     动物类别 = models.CharField(max_length=10)
     年龄 = models.IntegerField()
     照片 = models.TextField(blank=True, null=True)

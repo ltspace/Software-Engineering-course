@@ -1,18 +1,14 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-# from rest_framework.permissions import IsAuthenticated
-from acatdog.models import UserInfo
+from acatdog.models import AssistInfo
+# from acatdog.models import UserInfo
 from django.contrib.auth.models import User
-# from rest_framework.permissions import IsAuthenticated
 
+# 先存动物 后存救助单
 
-class UserInfoSelfChge(APIView):
-    def post(self, request):
-        # permission_classes = ([IsAuthenticated])
-        
+class SaveAssist(APIView):
+    def post(self, request):      
         data = request.POST
-        # id = request.POST.get('user_id', "")
-        # id = data.get("id", "").strip()
         username = data.get("username", "").strip()
         phonum = data.get("phonum", "").strip()
         email = data.get("email", "").strip()
@@ -20,9 +16,17 @@ class UserInfoSelfChge(APIView):
         job = data.get("job", "").strip()
         photo = data.get("photo", "").strip()
         sex = data.get("sex", "").strip()
-        obj = User.objects.get(username=username)
 
-        ok = UserInfo.objects.filter(id=obj.userinfo.id).update(sex=sex,phonum=phonum,photo=photo,email=email,addr=addr,job=job)
+
+        # 存动物
+        
+
+
+
+
+
+        obj = User.objects.get(username=username) # 获取user username
+        # ok = UserInfo.objects.get(id=obj.userinfo.id) 
 
         # user.set_password(password)
         # user.save()

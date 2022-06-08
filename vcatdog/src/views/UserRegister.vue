@@ -19,26 +19,12 @@
             <div class="form-group zu2">
               <input v-model="username" type="text" class="form-control" placeholder="用户名,唯一值,注册之后不可修改" />
             </div>
-            <!-- <div class="form-group zu2">
-              <input type="text" class="form-control" placeholder="邮箱" />
-            </div> -->
             <div class="form-group zu2">
               <input v-model="password" type="password" class="form-control" placeholder="6-16位密码,区分大小写" />
             </div>
             <div class="form-group zu2">
               <input v-model="password_confirm" type="password" class="form-control password_confirm" placeholder="确认密码" />
             </div>
-            <!-- <div class="form-group zu2">
-              <input type="text" class="form-control" placeholder="11位手机号" />
-            </div>
-            <div> -->
-              <!-- <div class="form-group zu2" style="float:left">
-                <input type="text" class="form-control" placeholder="输入验证码" />
-              </div> -->
-              <!-- <div class="form-group zu2" style="float:right">
-                <button type="button" class="btn btn-light">获取验证码</button>
-              </div> -->
-            <!-- </div> -->
           </fieldset>
           <div class="container-fluid" style="text-align: center">
             <button type="submit" class="btn btn-primary col-md-12">

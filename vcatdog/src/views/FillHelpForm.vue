@@ -5,7 +5,7 @@
     <div class="row">
       <label class="slogan">填写新救助单</label>
       <div class="col-md-4 center-in-center">
-        <form action="" role="form">
+        <form @submit.prevent="fillhelp">
           <fieldset>
             <div class="form-group ">
               <label for="exampleFormControlInput1" class="form-label">
@@ -96,11 +96,56 @@
 </template>
 
 <script>
-// import HelpForm from '../components/HelpForm';
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+import router from '@/router/index';
+import $ from 'jquery';
+
 export default {
   name: 'FillHelpForm',
-  components: {
-    // HelpForm
+  setup() {
+    const store = useStore();
+    let username = ref('');
+    let password = ref('');
+    let password_confirm = ref('');
+    let message = ref('');
+    
+    const register = () => {
+      message.value = "";
+      $.ajax({
+        url: "http://127.0.0.1:8000/register/",
+        type: "POST",
+        data: {
+          username: username.value,
+          password: password.value,
+          password_confirm: password_confirm.value,
+        },
+        success(resp) {
+          if (resp.result === "success") {
+            store.dispatch("login", {
+              username: username.value,
+              password: password.value,
+              success() {
+                router.push({name: 'home'});
+              },
+              error() {
+                message.value = "系统异常，请稍后重试";
+              }
+            });
+          } else {
+            message.value = resp.result;
+          }
+        }
+      })
+    };
+
+    return {
+      username,
+      password,
+      password_confirm,
+      message,
+      register,
+    }
   }
 }
 </script>

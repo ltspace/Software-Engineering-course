@@ -22,7 +22,6 @@
               <input type="text" class="form-control" id="exampleFormControlInput1"
                 :placeholder="$store.state.user.username" disabled
                 style="text-align:center; font-weight:border;letter-spacing: 3px;">
-              <!-- <h3 style="text-align:center; font-weight:border;letter-spacing: 3px;">{{ $store.state.user.username }}</h3> -->
             </div>
             <div class="media">
               <label for="exampleFormControlInput1" class="form-label">头像:</label>
