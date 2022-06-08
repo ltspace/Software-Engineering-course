@@ -32,11 +32,11 @@
               <label for="formFile" class="form-label">动物类别:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="1">
-                <label class="form-check-label" for="inlineRadio1">猫</label>
+                <label class="form-check-label" for="inlineRadio3">猫</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="2">
-                <label class="form-check-label" for="inlineRadio2">狗</label>
+                <label class="form-check-label" for="inlineRadio4">狗</label>
               </div>
             </div>
             <div class="form-group ">
@@ -60,16 +60,15 @@
               <label for="formFile" class="form-label">绝育情况:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio1"
-                  value="option1">
-                <label class="form-check-label" for="inlineRadio1">已绝育</label>
+                  value="1">
+                <label class="form-check-label" for="inlineRadio5">已绝育</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio2"
-                  value="option2">
-                <label class="form-check-label" for="inlineRadio2">未绝育</label>
+                  value="2">
+                <label class="form-check-label" for="inlineRadio6">未绝育</label>
               </div>
             </div>
-
             <div class="form-group ">
               <label for="exampleFormControlInput1" class="form-label">疫苗情况：</label>
               <input v-model="vacc" type="text" class="form-control" placeholder="例：已打狂犬疫苗" />
@@ -86,13 +85,13 @@
               <label for="formFile" class="form-label">可否被领养:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio1"
-                  value="option1">
-                <label class="form-check-label" for="inlineRadio1">可</label>
+                  value="1">
+                <label class="form-check-label" for="inlineRadio7">可</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio2"
-                  value="option2">
-                <label class="form-check-label" for="inlineRadio2">否</label>
+                  value="2">
+                <label class="form-check-label" for="inlineRadio8">否</label>
               </div>
             </div>
           </fieldset>
@@ -100,11 +99,8 @@
             <button type="submit" class="btn btn-primary col-md-12">
               提交
             </button>
-            
           </div>
-          
         </form>
-        
       </div>
     </div>
     
@@ -142,6 +138,7 @@ export default {
     let cd = "";
     let jveyu = "";
     let can_adopt ="";
+    
     if (selectedSex == 1) {
       sex = "公";
     }

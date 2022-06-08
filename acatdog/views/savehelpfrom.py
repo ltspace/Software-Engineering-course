@@ -26,7 +26,7 @@ class SaveAssist(APIView):
         sex = data.get("sex","").strip()
         cd = data.get("cd","").strip()
         jveyu = data.get("jveyu","").strip()
-        can_adopt = data.get("jveyu","").strip()
+        can_adopt = data.get("can_adopt","").strip()
 
         # 存动物
         

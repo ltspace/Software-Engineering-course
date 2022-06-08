@@ -1,5 +1,4 @@
 <template>
-  <!-- <link rel="stylesheet" media="screen" href="bootstrap/dist/css/bootstrap.min.css"> -->
   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
   <div class="container center-in-center">
     <div class="row">
@@ -143,7 +142,7 @@ export default {
           photo: photo.value,
         },
         success (resp) {
-          if (resp.result === "1") {
+          if (resp.result == "1") {
             
             if(phonum.value!=null&&email.value!=null&&addr.value!=null&&job.value!=null)
             {
