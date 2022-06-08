@@ -16,7 +16,7 @@ class AdoptInfo(models.Model):
 
 
 class AnimalInfo(models.Model):
-    动物id = models.IntegerField(db_column='动物ID', primary_key=True)
+    动物id = models.AutoField(db_column='动物ID', primary_key=True)
     动物名 = models.CharField(max_length=10 ,default="旺仔")
     动物类别 = models.CharField(max_length=10)
     年龄 = models.IntegerField()

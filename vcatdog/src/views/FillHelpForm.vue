@@ -11,54 +11,52 @@
               <label for="exampleFormControlInput1" class="form-label">
                 动物名：
               </label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="例：旺财">
+              <input v-model="name" type="name" class="form-control" id="exampleFormControlInput1" placeholder="例：旺财">
             </div>
             <label for="formFile" class="form-label">照片:</label>
-            <input class="form-control" type="file" id="formFile">
-            <div class="form-group ">
+            <!-- <input type="file" class="face" accept="image/*" @change="upload_photo" ref="inputer">
+             -->
+            <input v-model="photo" type="text" class="form-control" placeholder="请填入URL" />
+            <div class="form-group" id="sex">
               <label for="formFile" class="form-label">性别:&emsp;&emsp;&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                  value="option1">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
                 <label class="form-check-label" for="inlineRadio1">公</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                  value="option2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
                 <label class="form-check-label" for="inlineRadio2">母</label>
               </div>
             </div>
-            <div class="form-group ">
+            <div class="form-group" id="cd">
               <label for="formFile" class="form-label">动物类别:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                  value="option1">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
                 <label class="form-check-label" for="inlineRadio1">猫</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                  value="option2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
                 <label class="form-check-label" for="inlineRadio2">狗</label>
               </div>
             </div>
             <div class="form-group ">
               <label for="exampleFormControlInput1" class="form-label">品种：</label>
-              <input type="text" class="form-control" placeholder="例：哈士奇" />
+              <input v-model="type" type="text" class="form-control" placeholder="例：哈士奇" />
             </div>
             <div class="form-group ">
               <label for="exampleFormControlInput1" class="form-label">毛色：</label>
-              <input type="text" class="form-control" placeholder="例：黑白相间" />
+              <input v-model="fur" type="text" class="form-control" placeholder="例：黑白相间" />
             </div>
             <div class="form-group ">
               <label for="exampleFormControlInput1" class="form-label">年龄：</label>
-              <input type="text" class="form-control" placeholder="例:
-              6个月" />
+              <input v-model="age" type="text" class="form-control" placeholder="例: 6个月" />
             </div>
             <div class="form-group ">
               <label for="exampleFormControlInput1" class="form-label">性格：</label>
-              <input type="text" class="form-control" placeholder="例：过于活泼" />
+              <input v-model="chara" type="text" class="form-control" placeholder="例：过于活泼" />
             </div>
-            <div class="form-group ">
+
+            <div class="form-group " id="baby">
               <label for="formFile" class="form-label">绝育情况:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
@@ -71,80 +69,124 @@
                 <label class="form-check-label" for="inlineRadio2">未绝育</label>
               </div>
             </div>
+
             <div class="form-group ">
               <label for="exampleFormControlInput1" class="form-label">疫苗情况：</label>
-              <input type="text" class="form-control" placeholder="例：已打狂犬疫苗" />
+              <input v-model="vacc" type="text" class="form-control" placeholder="例：已打狂犬疫苗" />
             </div>
             <div class="form-group ">
               <label for="exampleFormControlInput1" class="form-label">疾病情况：</label>
-              <input type="text" class="form-control" placeholder="例：健康" />
+              <input v-model="ill" type="text" class="form-control" placeholder="例：健康" />
             </div>
             <div class="form-group ">
               <label for="exampleFormControlInput1" class="form-label">地址：</label>
-              <input type="text" class="form-control" placeholder="例：山东大学（威海）18号楼312宿舍" />
+              <input v-model="addr" type="text" class="form-control" placeholder="例：山东大学（威海）18号楼312宿舍" />
             </div>
           </fieldset>
           <div class="container-fluid" style="text-align: center">
             <button type="submit" class="btn btn-primary col-md-12">
               提交
             </button>
+            <div class="alert alert-warning"> {{ message }}</div>
           </div>
         </form>
       </div>
     </div>
   </div>
 </template>
-
+<!-- <script src="..\dist\static\js\jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script> -->
 <script>
 import { ref } from 'vue';
 import { useStore } from 'vuex';
-import router from '@/router/index';
+// import router from '@/router/index';
 import $ from 'jquery';
 
 export default {
+
   name: 'FillHelpForm',
-  setup() {
+  setup () {
     const store = useStore();
-    let username = ref('');
-    let password = ref('');
-    let password_confirm = ref('');
+    let username = store.state.user.username;
+    let name = ref('');
     let message = ref('');
-    
-    const register = () => {
+    let photo = ref('');
+    let fur = ref('');
+    let age = ref('');
+    let chara = ref('');
+    let type = ref('');
+    let vacc = ref('');
+    let ill = ref('');
+    let addr = ref('');
+    var selectedSex = $('#sex input:radio:checked').val();
+    var selectedcd = $('#sex input:radio:checked').val();
+    var selectedjveyu = $('#sex input:radio:checked').val();
+    let sex = "";
+    let cd = "";
+    let jveyu = "";
+    if (selectedSex == 1) {
+      sex = "公";
+    }
+    else {
+      sex = "母";
+    }
+    if (selectedcd == 1) {
+      sex = "猫";
+    }
+    else {
+      sex = "狗";
+    }
+    if (selectedjveyu == 1) {
+      sex = "已绝育";
+    }
+    else {
+      sex = "未绝育";
+    }
+    const fillhelp = () => {
       message.value = "";
       $.ajax({
-        url: "http://127.0.0.1:8000/register/",
+        url: "http://127.0.0.1:8000/userinfoselfchge/",
         type: "POST",
         data: {
-          username: username.value,
-          password: password.value,
-          password_confirm: password_confirm.value,
+          // id: id,
+          username: username,
+          name: name.value,
+          photo: photo.value,
+          fur: fur.value,
+          age: age.value,
+          chara: chara.value,
+          type: type.value,
+          vacc: vacc.value,
+          ill: ill.value,
+          addr: addr.value,
+          sex: sex,
+          cd: cd,
+          jveyu: jveyu,
         },
-        success(resp) {
-          if (resp.result === "success") {
-            store.dispatch("login", {
-              username: username.value,
-              password: password.value,
-              success() {
-                router.push({name: 'home'});
-              },
-              error() {
-                message.value = "系统异常，请稍后重试";
-              }
-            });
+        success (resp) {
+          if (resp.result === "1") {
+            message.value = resp.result;
           } else {
             message.value = resp.result;
           }
         }
       })
     };
-
     return {
       username,
-      password,
-      password_confirm,
+      name,
+      photo,
+      fur,
+      age,
+      chara,
+      type,
+      vacc,
+      ill,
+      addr,
+      sex,
+      cd,
+      jveyu,
       message,
-      register,
+      fillhelp,
     }
   }
 }
