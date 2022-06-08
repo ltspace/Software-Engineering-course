@@ -17,7 +17,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AdoptInfo',
             fields=[
-                ('用户id', models.IntegerField(db_column='用户ID', primary_key=True, serialize=False)),
+                ('用户id', models.IntegerField(
+                    db_column='用户ID', primary_key=True, serialize=False)),
                 ('领养日期', models.DateTimeField()),
                 ('动物id', models.IntegerField(db_column='动物ID')),
                 ('领养单编号', models.IntegerField()),
@@ -32,7 +33,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AnimalInfo',
             fields=[
-                ('动物id', models.IntegerField(db_column='动物ID', primary_key=True, serialize=False)),
+                ('动物id', models.IntegerField(
+                    db_column='动物ID', primary_key=True, serialize=False)),
                 ('动物类别', models.CharField(max_length=10)),
                 ('年龄', models.IntegerField()),
                 ('照片', models.TextField(blank=True, null=True)),
@@ -54,7 +56,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AssistInfo',
             fields=[
-                ('动物id', models.IntegerField(db_column='动物ID', primary_key=True, serialize=False)),
+                ('动物id', models.IntegerField(
+                    db_column='动物ID', primary_key=True, serialize=False)),
                 ('救助日期', models.DateTimeField()),
                 ('救助单编号', models.IntegerField()),
                 ('用户id', models.IntegerField(db_column='用户ID')),
@@ -85,8 +88,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserInfo',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('pwd', models.CharField(max_length=50)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('addr', models.CharField(blank=True, max_length=50, null=True)),
                 ('phonum', models.CharField(max_length=13, null=True)),
                 ('sex', models.CharField(default='男', max_length=2, null=True)),
@@ -95,7 +98,8 @@ class Migration(migrations.Migration):
                 ('photo', models.URLField(blank=True, max_length=256)),
                 ('age', models.DateTimeField(blank=True, null=True)),
                 ('crepoint', models.IntegerField(default='0')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(
+                    on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'db_table': 'user_info',
