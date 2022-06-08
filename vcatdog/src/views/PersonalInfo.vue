@@ -17,13 +17,6 @@
             <div class="zu1" style="float:center">
               <label class="" slogan>个人信息</label>
             </div>
-            <!-- <div class="mb-3 row">
-              <label for="staticEmail" class="col-sm-4 col-form-label">用户ID:</label>
-              <div class="col-sm-5">
-                {{ $store.state.user_id }}
-              </div>
-            </div> -->
-
             <div class="mb-3 ">
               <label for="exampleFormControlInput1" class="form-label">用户名:</label>
               <input type="text" class="form-control" id="exampleFormControlInput1"
@@ -31,12 +24,6 @@
                 style="text-align:center; font-weight:border;letter-spacing: 3px;">
               <!-- <h3 style="text-align:center; font-weight:border;letter-spacing: 3px;">{{ $store.state.user.username }}</h3> -->
             </div>
-
-
-            <!-- <div class="mb-3"> -->
-            <!-- <label for="formFile" class="form-label">头像</label> -->
-            <!-- <input class="form-control" type="file" id="formFile"> -->
-            <!-- </div> -->
             <div class="media">
               <label for="exampleFormControlInput1" class="form-label">头像:</label>
               <img :src="$store.state.user.photo" class="mb-3" style="width:50px;height:50px;border-radius: 100%;margin-left: 50px;">
@@ -159,17 +146,23 @@ export default {
         success (resp) {
           if (resp.result === "1") {
             
-            if(phonum!=null&&email!=null&&addr!=null&&job!=null)
+            if(phonum.value!=null&&email.value!=null&&addr.value!=null&&job.value!=null)
             {
               store.state.user.crepoint=1;
               message.value = "更新成功!您的信用积分为1!";
+              store.state.user.phonum=phonum.value;
+              store.state.user.sex=sex.value;
+              store.state.user.photo=photo.value;
+              store.state.user.job=job.value;
+              store.state.user.email=email.value;
+              store.state.user.addr=addr.value;
             }
             else{
               store.state.user.crepoint=0;
               message.value = "更新成功!存在部分必要个人领养信息未填,您的信用积分为0!";
             }
           } else {
-            message.value = "更新失败！请检查您的个人信息！";
+            message.value = resp.result;
           }
         }
       })

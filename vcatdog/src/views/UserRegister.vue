@@ -17,7 +17,7 @@
               <label class="slogan">注册</label>
             </div>
             <div class="form-group zu2">
-              <input v-model="username" type="text" class="form-control" placeholder="用户名,唯一值" />
+              <input v-model="username" type="text" class="form-control" placeholder="用户名,唯一值,注册之后不可修改" />
             </div>
             <!-- <div class="form-group zu2">
               <input type="text" class="form-control" placeholder="邮箱" />

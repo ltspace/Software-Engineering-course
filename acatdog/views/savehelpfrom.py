@@ -22,17 +22,11 @@ class UserInfoSelfChge(APIView):
         sex = data.get("sex", "").strip()
         obj = User.objects.get(username=username)
 
-        if len(phonum) > 13 :
-            return Response({
-                'result' : "手机号位数超出限制"
-            })
-        if email.find("@") == -1 or not email.endswith('.com'):
-            return Response({
-                'result' : "邮箱格式不正确"
-            })
-            
         ok = UserInfo.objects.filter(id=obj.userinfo.id).update(sex=sex,phonum=phonum,photo=photo,email=email,addr=addr,job=job)
 
+        # user.set_password(password)
+        # user.save()
+        # UserInfo.objects.create(user=user, photo="https://img2.baidu.com/it/u=2161949891,656888789&fm=26&fmt=auto")
         return Response({
             'result': str(ok)
         })
