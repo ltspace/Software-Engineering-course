@@ -24,6 +24,7 @@ from acatdog.views.register import PlayerView
 from acatdog.views.userinfoselfchge import UserInfoSelfChge
 from acatdog.views.savehelpfrom import SaveAssist
 from acatdog.views.selectsix import AniList
+from acatdog.views.selectone import AniOne
 from django.urls import path, include
 from re import template
 from tempfile import tempdir
@@ -43,5 +44,6 @@ urlpatterns = [
     path('register/', PlayerView.as_view(), name="register"),
     path('saveassit/', SaveAssist.as_view(), name="saveassit"),
     path('anilist/', AniList.as_view(), name="anilist"),
+    path('anione/', AniOne.as_view(), name="anilone"),
     path('userinfoselfchge/', UserInfoSelfChge.as_view(), name="userinfoselfchge"),
 ]

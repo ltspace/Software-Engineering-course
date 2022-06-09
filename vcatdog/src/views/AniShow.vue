@@ -6,10 +6,10 @@
   <div class="container">
     <h3 style="font-family:Youyuan;text-align: center;">可领养动物</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4 ">
-      <div class="col" v-for="animal in animals" :key="animal.id">
+      <div class="col" v-for="animal in animals" :key="animal.id" @click="open_user_profile(animal.id)">
         <div class="card" style="cursor:pointer" id="1">
           <img :src="animal.photo" class="card-img-top" alt="...">
-          <a href="#" class="btn btn-primary how">领养我</a>
+          <button class="btn btn-primary how">领养我</button>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
 <script>
 import $ from 'jquery';
 import { ref } from 'vue';
-// import router from '@/router/index';
+import router from '@/router/index';
 // import { useStore } from 'vuex';
 import UNavBar from '../components/UNavBar.vue'
 export default {
@@ -56,24 +56,17 @@ export default {
       }
     });
 
-    // const open_user_profile = userId => {
-    //   if (store.state.user.is_login) {
-    //     router.push({
-    //       name: "userprofile",
-    //       params: {
-    //         userId
-    //       }
-    //     })
-    //   } else {
-    //     router.push({
-    //       name: "login"
-    //     });
-    //   }
-    // }
-
+    const open_user_profile = aniid => {
+        router.push({
+          name: "adoptioninfo",
+          params: {
+            aniid
+          }
+        })
+    };
     return {
       animals,
-      // open_user_profile
+      open_user_profile
     };
   }
 

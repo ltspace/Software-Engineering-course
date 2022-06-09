@@ -3,216 +3,160 @@
   <div class="container center-in-center">
     <div class="card">
       <div class="row g-0">
+
         <div class="col-md-6">
-          <img src="../assets/left.png" class="img-fluid rounded-start">
+          <div class="container-fluid">
+            <img :src="photo" class="img-fluid" style="border-radius: 72px;">
+          </div>
         </div>
         <div class="col-md-6">
           <div class="card-body item">
             <h2 class="card-title" style="margin-bottom: 20px;">Adopt me</h2>
             <form>
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" value="haha">
+                  <input type="text" class="form-control" id="inputEmail3" :value="aniid" disabled>
                 </div>
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">名字</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
-                </div>
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
+                  <input type="text" class="form-control" id="inputEmail3" :value="name" disabled>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">类型</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" value="haha">
+                  <input type="text" class="form-control" id="inputEmail3" :value="cd" disabled>
                 </div>
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">年龄</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" value="haha">
-                </div>
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
+                  <input type="text" class="form-control" id="inputEmail3" :value="age" disabled>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">地址</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" value="haha">
+                  <input type="text" class="form-control" id="inputEmail3" :value="addr" disabled>
                 </div>
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">品种</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" value="haha">
-                </div>
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
+                  <input type="text" class="form-control" id="inputEmail3" :value="type" disabled>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">毛色</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" value="haha">
+                  <input type="text" class="form-control" id="inputEmail3" :value="fur" disabled>
                 </div>
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">性别</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" value="haha">
-                </div>
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
+                  <input type="text" class="form-control" id="inputEmail3" :value="sex" disabled>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">性格</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" value="haha">
+                  <input type="text" class="form-control" id="inputEmail3" :value="chara" disabled>
+                </div>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">疾病情况</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="inputEmail3" :value="ill" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">绝育情况</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="inputEmail3" :value="jveyu" disabled>
+                </div>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">疫苗情况</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="inputEmail3" :value="vacc" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="inputEmail3">
                 </div>
                 <button type="button" class="btn btn-dark control col-sm-3">申请领养</button>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="inputEmail3">
+                </div>
               </div>
-
             </form>
           </div>
-
         </div>
       </div>
     </div>
-
-
-    <!-- 
-    <div style="position: absolute;">
-      <img src="../assets/left.png" class="d-block w-100" style="border-radius: 10%" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h2>This cat can be coquettish and cute</h2>
-      </div>
-    </div>
-    <div class="azu2">
-      <img src="../assets/Background.png" style="border-radius: 10%" alt="...">
-    </div>
-    <div class="azu3" style="float:right">
-      <h2 style="margin-top=0;">Adopt me</h2>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">ID&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="001">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Name&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="果冻">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Sex&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="母">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Catvatar&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="英国短毛猫">
-
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Category&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="猫">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Vaccine stuation&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="已接种猫三联">
-        </div>
-
-      </div>
-    </div>
-    <div class="azu5" style="float:right">
-      <button type="button" class="btn btn-dark">申请领养</button>
-    </div>
-
-
-    <div class="azu4" style="float:right">
-
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Address&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="贝克街221B">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Age&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="5个月">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Fur color&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="黑白相间">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Character&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="性格温和">
-
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Disease situation&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="无疾病史">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Sterilize&emsp;&emsp;&emsp;&emsp;</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="已绝育">
-        </div>
-      </div> -->
-    <!-- </div> -->
   </div>
 </template>
 
 <script>
 import UNavBar from '../components/UNavBar';
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+import $ from 'jquery';
+
+
 export default {
   name: 'AdoptionInfo',
   components: {
     UNavBar
+  },
+  setup () {
+    let name = ref();
+    let photo = ref();
+    let fur = ref();
+    let age = ref();
+    let chara = ref();
+    let type = ref();
+    let vacc = ref();
+    let ill = ref();
+    let addr = ref();
+    let sex = ref();
+    let cd = ref();
+    let jveyu = ref();
+    const route = useRoute();
+    const aniid = route.params.aniid;
+    $.ajax({
+      url: "http://127.0.0.1:8000/anione/",
+      type: "GET",
+      data: {
+        aniid: aniid,
+      },
+      success (resp) {
+        name.value = resp.name;
+        photo.value = resp.photo;
+        fur.value = resp.fur;
+        age.value = resp.age;
+        chara.value = resp.chara;
+        type.value = resp.type;
+        vacc.value = resp.vacc;
+        ill.value = resp.ill;
+        addr.value = resp.addr;
+        sex.value = resp.sex;
+        cd.value = resp.cd;
+        jveyu.value = resp.jveyu;
+      },
+    });
+    return {
+      aniid,
+      name,
+      photo,
+      fur,
+      age,
+      chara,
+      type,
+      vacc,
+      ill,
+      addr,
+      sex,
+      cd,
+      jveyu,
+    }
   }
 }
+
 </script>
 
 <style scoped>
@@ -278,8 +222,8 @@ export default {
 
 
 .form-group {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: px;
 }
 </style>
 

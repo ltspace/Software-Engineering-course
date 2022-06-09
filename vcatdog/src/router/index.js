@@ -87,7 +87,7 @@ const routes = [
   },
 
   {
-    path: '/adoptioninfo',
+    path: '/adoptioninfo/:aniid/',
     name: 'adoptioninfo',
     component: AdoptionInfo
   },

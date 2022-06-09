@@ -11,13 +11,10 @@ class GetInfo(APIView):
     def get(self, request):
         try:
             user_id = int(request.GET.get('user_id', 1))
-            # me_id = request.user.id
             player = UserInfo.objects.get(user_id=user_id)
             return Response({
                 'user_id' : user_id,
                 'username': player.user.username,
-                # 'id': player.id,
-                # 'username': player.user.username,
                 'photo': player.photo,
                 'addr':player.addr,
                 'phonum':player.phonum,
@@ -25,8 +22,6 @@ class GetInfo(APIView):
                 'job':player.job,
                 'crepoint':player.crepoint,
                 'sex':player.sex,
-                # 'followerCount': player.followerCount,
-                # 'is_followed': Follow.objects.filter(source=me_id, target=user_id).exists()
             })
         except:
             return Response({
