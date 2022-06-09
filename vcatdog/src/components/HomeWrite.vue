@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .card-body {
   margin-top: 0;
   padding-top: 0;

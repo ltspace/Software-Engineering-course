@@ -58,8 +58,7 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
-            <div class="nav-link stretch dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown " aria-expanded="false">
+            <div class="nav-link stretch dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img :src="$store.state.user.photo" class="mb-3"
                 style="width:50px;height:50px;border-radius: 100%;margin-right: 10px;">
               {{ $store.state.user.username }}
@@ -73,11 +72,11 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item stretch smallcard" href="/#/viewhelpform/">查看个人信息</a></li>
+              <li><router-link class="nav-link dropdown-item stretch smallcard" :to="{ name: 'personalinfo' }">查看个人信息</router-link></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item stretch smallcard" style="cursor:pointer" @click="logout">退出</a></li>
+              <li><a class="dropdown-item stretch smallcard" style="cursor:pointer" @click="logout">退出登录</a></li>
             </ul>
           </li>
           <!-- <li class="nav-item">

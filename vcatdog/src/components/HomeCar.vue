@@ -55,7 +55,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .carousel {
   font-family: YouYuan, Avenir, Helvetica, Arial, sans-serif;
   /* width: 75rem; */
