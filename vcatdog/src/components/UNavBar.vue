@@ -46,20 +46,9 @@
           <li class="nav-item">
             <router-link class="nav-link stretch" :to="{ name: 'anishow' }">我要领养</router-link>
           </li>
-          <li class="nav-item dropdown">
-            <div class="nav-link stretch dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              我要救助
-            </div>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item stretch smallcard" href="/#/fillhelpform/">填写新救助单</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item stretch smallcard" href="/#/viewhelpform/">查看救助单</a></li>
-            </ul>
+          <li class="nav-item">
+            <router-link class="nav-link stretch" :to="{ name: 'fillhelpform' }">我要救助</router-link>
           </li>
-
           <li class="nav-item">
             <router-link class="nav-link stretch" :to="{ name: 'show' }">动物展示</router-link>
           </li>
@@ -68,15 +57,37 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <router-link class="nav-link stretch" :to="{ name: 'personalinfo' }">
-              <img :src="$store.state.user.photo" class="mb-3" style="width:50px;height:50px;border-radius: 100%">
+          <li class="nav-item dropdown">
+            <div class="nav-link stretch dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown " aria-expanded="false">
+              <img :src="$store.state.user.photo" class="mb-3"
+                style="width:50px;height:50px;border-radius: 100%;margin-right: 10px;">
               {{ $store.state.user.username }}
+            </div>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item stretch smallcard" href="/#/viewhelpform/">查看救助单</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item stretch smallcard" href="/#/viewhelpform/">查看领养单</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item stretch smallcard" href="/#/viewhelpform/">查看个人信息</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item stretch smallcard" style="cursor:pointer" @click="logout">退出</a></li>
+            </ul>
+          </li>
+          <!-- <li class="nav-item">
+            <router-link class="nav-link stretch" :to="{ name: 'personalinfo' }">
+             
             </router-link>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link stretch" style="cursor:pointer" @click="logout">退出</a>
-          </li>
+          </li> -->
         </ul>
       </div>
 

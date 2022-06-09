@@ -52,6 +52,8 @@ export default {
 }
 .card{
   border: 0ch;
+  background: transparent;
+  margin-top: 10em;
 }
 
 .card {
