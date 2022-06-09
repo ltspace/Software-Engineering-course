@@ -1,50 +1,19 @@
 <template>
+  <div style=" height:100%; overflow:auto">
   <UNavBar />
+
+  
   <div class="container">
     <h3 style="font-family:Youyuan;text-align: center;">可领养动物</h3>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card" id="1">
-          <img src="../assets/R-C.jpg" class="card-img-top" alt="...">
-          <a href="#" class="btn btn-primary how">领养我</a>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card" id="2">
-          <img src="../assets/R-C.jpg" class="card-img-top" alt="...">
-          <a href="#" class="btn btn-primary how">领养我</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card" id="3">
-          <img src="../assets/R-C.jpg" class="card-img-top" alt="...">
-          <a href="#" class="btn btn-primary how">领养我</a>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card" id="4">
-          <img src="../assets/R-C.jpg" class="card-img-top" alt="...">
-          <a href="#" class="btn btn-primary how">领养我</a>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card" id="5">
-          <img src="../assets/R-C.jpg" class="card-img-top" alt="...">
-          <a href="#" class="btn btn-primary how">领养我</a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card" id="6">
-          <img src="../assets/R-C.jpg" class="card-img-top" alt="...">
+    <div class="row row-cols-1 row-cols-md-3 g-4 ">
+      <div class="col" v-for="animal in animals" :key="animal.id">
+        <div class="card" style="cursor:pointer" id="1">
+          <img :src="animal.photo" class="card-img-top" alt="...">
           <a href="#" class="btn btn-primary how">领养我</a>
         </div>
       </div>
     </div>
   </div>
-
 
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center ">
@@ -59,92 +28,56 @@
       </li>
     </ul>
   </nav>
-
+</div>
 </template>
 
 
 <script>
+import $ from 'jquery';
+import { ref } from 'vue';
+// import router from '@/router/index';
+// import { useStore } from 'vuex';
 import UNavBar from '../components/UNavBar.vue'
 export default {
   name: 'AniShow',
   components: {
     UNavBar
   },
-  
   setup () {
-    const store = useStore();
-    // let id = store.state.user_id;
-    let username = store.state.user.username;
-    let phonum = ref('');
-    let email = ref('');
-    let addr = ref('');
-    let job = ref('');
-    let message = ref('');
-    let photo = ref('');
-    var selectedSex = $('#sex input:radio:checked').val();
-    let sex = "男";
-    if (selectedSex==1)
-    {
-      sex = "男";
-    }
-    else 
-    {
-      sex = "女";
-    }
+    // const store = useStore();
+    let animals = ref([]);
 
-    const userinfoselfchge = () => {
-      message.value = "";
-      $.ajax({
-        url: "http://127.0.0.1:8000/userinfoselfchge/",
-        type: "POST",
-        data: {
-          // id: id,
-          username: username,
-          sex: sex,
-          phonum: phonum.value,
-          email: email.value,
-          addr: addr.value,
-          job: job.value,
-          photo: photo.value,
-        },
-        success (resp) {
-          if (resp.result == "1") {
-            
-            if(phonum.value!=null&&email.value!=null&&addr.value!=null&&job.value!=null)
-            {
-              store.state.user.crepoint=1;
-              message.value = "更新成功!您的信用积分为1!";
-              store.state.user.phonum=phonum.value;
-              store.state.user.sex=sex.value;
-              store.state.user.photo=photo.value;
-              store.state.user.job=job.value;
-              store.state.user.email=email.value;
-              store.state.user.addr=addr.value;
-            }
-            else{
-              store.state.user.crepoint=0;
-              message.value = "更新成功!存在部分必要个人领养信息未填,您的信用积分为0!";
-            }
-          } else {
-            message.value = resp.result;
-          }
-        }
-      })
-    };
+    $.ajax({
+      url: 'http://127.0.0.1:8000/anilist/',
+      type: "get",
+      success (resp) {
+        animals.value = resp;
+        console.log(resp);
+      }
+    });
+
+    // const open_user_profile = userId => {
+    //   if (store.state.user.is_login) {
+    //     router.push({
+    //       name: "userprofile",
+    //       params: {
+    //         userId
+    //       }
+    //     })
+    //   } else {
+    //     router.push({
+    //       name: "login"
+    //     });
+    //   }
+    // }
 
     return {
-      // id,
-      sex,
-      username,
-      phonum,
-      email,
-      addr,
-      job,
-      message,
-      photo,
-      userinfoselfchge,
-    }
+      animals,
+      // open_user_profile
+    };
   }
+
+
 }
 
 </script>
@@ -169,5 +102,8 @@ export default {
   color: black;
 }
 
-
+.card:hover{
+  box-shadow: 2px 2px 10px grey;
+  transition:500ms;
+}
 </style>

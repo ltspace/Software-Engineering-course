@@ -24,22 +24,22 @@
             </div>
             <div class="media">
               <label for="exampleFormControlInput1" class="form-label">头像:</label>
-              <img :src="$store.state.user.photo" class="mb-3" style="width:50px;height:50px;border-radius: 100%;margin-left: 50px;">
+              <img :src="$store.state.user.photo" class="mb-3"
+                style="width:50px;height:50px;border-radius: 100%;margin-left: 50px;">
               <div class="media-body">
                 <input v-model="photo" type="text" class="form-control" :placeholder="$store.state.user.photo" />
               </div>
             </div>
 
-            <div class="form-group zu2" id="sex" v-if="$store.state.user.sex=='男'" style="margin-top:10px">
+            <div class="form-group zu2" id="sex" v-if="$store.state.user.sex == '男'" style="margin-top:10px">
               <label for="formFile" class="form-label">性别:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                  value="1" checked>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"
+                  checked>
                 <label class="form-check-label" for="inlineRadio1">男</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                  value="2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
                 <label class="form-check-label" for="inlineRadio2">女</label>
               </div>
             </div>
@@ -47,13 +47,12 @@
             <div class="form-group zu2" id="sex" v-else style="margin-top:10px">
               <label for="formFile" class="form-label">性别:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                  value="1" >
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
                 <label class="form-check-label" for="inlineRadio1">男</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                  value="2" checked>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2"
+                  checked>
                 <label class="form-check-label" for="inlineRadio2">女</label>
               </div>
             </div>
@@ -89,7 +88,8 @@
             </button>
           </div>
         </form>
-        <router-link class="btn btn-primary col-md-5" :to="{ name: 'home' }" role="button" style="margin-left:25px;">返回主页面</router-link>
+        <router-link class="btn btn-primary col-md-5" :to="{ name: 'home' }" role="button" style="margin-left:25px;">
+          返回主页面</router-link>
       </div>
     </div>
 
@@ -115,18 +115,16 @@ export default {
     let job = ref('');
     let message = ref('');
     let photo = ref('');
-    var selectedSex = $('#sex input:radio:checked').val();
     let sex = "男";
-    if (selectedSex==1)
-    {
-      sex = "男";
-    }
-    else 
-    {
-      sex = "女";
-    }
-
     const userinfoselfchge = () => {
+      var selectedSex = $('#sex input:radio:checked').val();
+      if (selectedSex == 1) {
+        sex = "男";
+      }
+      else {
+        sex = "女";
+      }
+
       message.value = "";
       $.ajax({
         url: "http://127.0.0.1:8000/userinfoselfchge/",
@@ -143,20 +141,19 @@ export default {
         },
         success (resp) {
           if (resp.result == "1") {
-            
-            if(phonum.value!=null&&email.value!=null&&addr.value!=null&&job.value!=null)
-            {
-              store.state.user.crepoint=1;
+
+            if (phonum.value != null && email.value != null && addr.value != null && job.value != null) {
+              store.state.user.crepoint = 1;
               message.value = "更新成功!您的信用积分为1!";
-              store.state.user.phonum=phonum.value;
-              store.state.user.sex=sex.value;
-              store.state.user.photo=photo.value;
-              store.state.user.job=job.value;
-              store.state.user.email=email.value;
-              store.state.user.addr=addr.value;
+              store.state.user.phonum = phonum.value;
+              store.state.user.sex = sex.value;
+              store.state.user.photo = photo.value;
+              store.state.user.job = job.value;
+              store.state.user.email = email.value;
+              store.state.user.addr = addr.value;
             }
-            else{
-              store.state.user.crepoint=0;
+            else {
+              store.state.user.crepoint = 0;
               message.value = "更新成功!存在部分必要个人领养信息未填,您的信用积分为0!";
             }
           } else {

@@ -19,14 +19,14 @@ class AnimalInfo(models.Model):
     动物id = models.AutoField(db_column='动物ID', primary_key=True)
     name = models.CharField(max_length=10 ,default="旺仔")
     cd = models.CharField(max_length=10)
-    age = models.IntegerField(blank=True, null=True)
+    age = models.CharField(max_length=11,blank=True, null=True)
     photo = models.TextField(blank=True, null=True)
     type = models.CharField(max_length=11)
     fur = models.CharField(max_length=11)
     sex = models.CharField(max_length=11)
     chara = models.CharField(max_length=11, blank=True, null=True)
     addr = models.CharField(max_length=11)
-    is_adopt = models.CharField(max_length=11,default="否")
+    can_adopt = models.CharField(max_length=11,default="否")
     jveyu = models.CharField(max_length=11, blank=True, null=True)
     vacc = models.CharField(max_length=11, blank=True, null=True)
     ill = models.CharField(max_length=11, blank=True, null=True)
@@ -39,9 +39,8 @@ class AnimalInfo(models.Model):
 class AssistInfo(models.Model):
     动物id = models.IntegerField(db_column='动物ID')
     救助日期 = models.DateTimeField()
-    救助单编号 = models.AutoField(primary_key=True,default=1)
+    救助单编号 = models.AutoField(primary_key=True)
     用户名 = models.CharField(db_column='用户名',max_length=20,default="admin")  # Field name made lowercase.
-    是否可被领养 = models.CharField(max_length=10)
 
     class Meta:
         managed = True

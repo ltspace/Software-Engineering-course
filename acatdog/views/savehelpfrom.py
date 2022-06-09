@@ -1,11 +1,10 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from acatdog.models import AssistInfo
-# from acatdog.models import UserInfo
+from acatdog.models import AnimalInfo
 from django.contrib.auth.models import User
 import datetime
 
-from acatdog.models import AnimalInfo
 
 # 先存动物 后存救助单
 
@@ -40,14 +39,14 @@ class SaveAssist(APIView):
             })
 
         ani=AnimalInfo.objects.create(name=name,photo=photo,fur=fur,age=age,chara=chara,
-        type=type,vacc=vacc,ill=ill,addr=addr,sex=sex,cd=cd,jveyu=jveyu)
+        type=type,vacc=vacc,ill=ill,addr=addr,sex=sex,cd=cd,jveyu=jveyu,can_adopt=can_adopt)
         
 
         # 存救助表
         obj = User.objects.get(username=username)  # 获取user username
-        ass = AssistInfo.objects.create(动物id=ani.动物id,救助日期=datetime.datetime.now(),用户名=username,是否可被领养=can_adopt)
+        ass = AssistInfo.objects.create(动物id=ani.动物id,救助日期=datetime.datetime.now(),用户名=username)
 
         return Response({
-            'result': str(ass)
+            'result': "填写救助单成功!您救助的动物id是:"+str(ani.动物id)+"。"
         })
 

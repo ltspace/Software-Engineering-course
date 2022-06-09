@@ -18,10 +18,10 @@ class Migration(migrations.Migration):
             name='AdoptInfo',
             fields=[
                 ('用户id', models.IntegerField(
-                    db_column='用户ID', primary_key=True, serialize=False)),
+                    db_column='用户ID',serialize=False)),
                 ('领养日期', models.DateTimeField()),
                 ('动物id', models.IntegerField(db_column='动物ID')),
-                ('领养单编号', models.AutoField()),
+                ('领养单编号', models.AutoField(primary_key=True, serialize=False)),
                 ('领养状态', models.CharField(max_length=50)),
                 ('合照', models.TextField(blank=True, null=True)),
             ],
@@ -33,18 +33,18 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AnimalInfo',
             fields=[
-                ('动物id', models.IntegerField(
+                ('动物id', models.AutoField(
                     db_column='动物ID', primary_key=True, serialize=False)),
                 ('cd', models.CharField(max_length=10)),
                 ('name', models.CharField(default='旺仔', max_length=10)),
-                ('age', models.IntegerField()),
+                ('age', models.CharField(blank=True, null=True)),
                 ('photo', models.TextField(blank=True, null=True)),
                 ('type', models.CharField(max_length=11)),
                 ('fur', models.CharField(max_length=11)),
                 ('sex', models.CharField(max_length=11)),
                 ('chara', models.CharField(blank=True, max_length=11, null=True)),
                 ('addr', models.CharField(max_length=11)),
-                ('is_adopt', models.CharField(max_length=11)),
+                ('can_adopt', models.CharField(default='否', max_length=11)),
                 ('jveyu', models.CharField(blank=True, max_length=11, null=True)),
                 ('vacc', models.CharField(blank=True, max_length=11, null=True)),
                 ('ill', models.CharField(blank=True, max_length=11, null=True)),
@@ -58,11 +58,10 @@ class Migration(migrations.Migration):
             name='AssistInfo',
             fields=[
                 ('动物id', models.IntegerField(
-                    db_column='动物ID', primary_key=True, serialize=False)),
+                    db_column='动物ID')),
                 ('救助日期', models.DateTimeField()),
-                ('救助单编号', models.AutoField()),
+                ('救助单编号', models.AutoField(primary_key=True, serialize=False)),
                 ('用户名', models.IntegerField(db_column='用户名')),
-                ('是否可被领养', models.CharField(max_length=2)),
             ],
             options={
                 'db_table': 'assist_info',

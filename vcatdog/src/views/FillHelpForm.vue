@@ -59,13 +59,11 @@
             <div class="form-group " id="baby">
               <label for="formFile" class="form-label">绝育情况:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio1"
-                  value="1">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio1" value="1">
                 <label class="form-check-label" for="inlineRadio5">已绝育</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio2"
-                  value="2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio2" value="2">
                 <label class="form-check-label" for="inlineRadio6">未绝育</label>
               </div>
             </div>
@@ -84,26 +82,26 @@
             <div class="form-group " id="can_adopt">
               <label for="formFile" class="form-label">可否被领养:&emsp;&emsp;</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio1"
-                  value="1">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio1" value="1">
                 <label class="form-check-label" for="inlineRadio7">可</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio2"
-                  value="2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio2" value="2">
                 <label class="form-check-label" for="inlineRadio8">否</label>
               </div>
             </div>
           </fieldset>
           <div class="container-fluid" style="text-align: center">
-            <button type="submit" class="btn btn-primary col-md-12">
+            <button type="submit" class="btn btn-primary col-md-5">
               提交
             </button>
           </div>
         </form>
+        <router-link class="btn btn-primary col-md-5" :to="{ name: 'home' }" role="button" style="margin-left:25px;">
+          返回主页面</router-link>
       </div>
     </div>
-    
+
   </div>
   <div class="alert alert-warning"> {{ message }}</div>
 </template>
@@ -130,40 +128,39 @@ export default {
     let vacc = ref('');
     let ill = ref('');
     let addr = ref('');
-    var selectedSex = $('#sex input:radio:checked').val();
-    var selectedcd = $('#cd input:radio:checked').val();
-    var selectedjveyu = $('#jveyu input:radio:checked').val();
-    var selectedadopt = $('#can_adopt input:radio:checked').val();
     let sex = "";
     let cd = "";
     let jveyu = "";
-    let can_adopt ="";
-    
-    if (selectedSex == 1) {
-      sex = "公";
-    }
-    else {
-      sex = "母";
-    }
-    if (selectedcd == 1) {
-      cd = "猫";
-    }
-    else {
-      cd = "狗";
-    }
-    if (selectedjveyu == 1) {
-      jveyu = "已绝育";
-    }
-    else {
-      jveyu = "未绝育";
-    }
-    if (selectedadopt == 1) {
-      can_adopt = "可";
-    }
-    else {
-      can_adopt = "否";
-    }
+    let can_adopt = "";
     const fillhelp = () => {
+      var selectedSex = $('#sex input:radio:checked').val();
+      var selectedcd = $('#cd input:radio:checked').val();
+      var selectedjveyu = $('#baby input:radio:checked').val();
+      var selectedadopt = $('#can_adopt input:radio:checked').val();
+      if (selectedSex == 1) {
+        sex = "公";
+      }
+      else {
+        sex = "母";
+      }
+      if (selectedcd == 1) {
+        cd = "猫";
+      }
+      else {
+        cd = "狗";
+      }
+      if (selectedjveyu == 1) {
+        jveyu = "已绝育";
+      }
+      else {
+        jveyu = "未绝育";
+      }
+      if (selectedadopt == 1) {
+        can_adopt = "可";
+      }
+      else {
+        can_adopt = "否";
+      }
       message.value = "";
       $.ajax({
         url: "http://127.0.0.1:8000/saveassit/",
@@ -182,15 +179,11 @@ export default {
           addr: addr.value,
           sex: sex,
           cd: cd,
-          can_adopt:can_adopt,
+          can_adopt: can_adopt,
           jveyu: jveyu,
         },
         success (resp) {
-          if (resp.result === "1") {
             message.value = resp.result;
-          } else {
-            message.value = resp.result;
-          }
         }
       })
     };

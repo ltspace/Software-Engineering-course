@@ -98,8 +98,8 @@ const routes = [
     component: AdminShow
   },
   {
-    path: '/adminCheck',
-    name: 'adminCheck',
+    path: '/admincheck',
+    name: 'admincheck',
     component: AdminCheck
   },
   {
@@ -137,12 +137,11 @@ const routes = [
     name: 'anishow',
     component: AniShow
   },
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
 
-  // },
+  {
+    path: '/:catchAll(.*)',
+    redirect:"/404"
+  },
   // {
   //   path: '/',
   //   name: 'home',
