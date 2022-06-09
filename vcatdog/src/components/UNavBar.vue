@@ -21,7 +21,6 @@
           <li class="nav-item">
             <router-link class="nav-link stretch" :to="{ name: 'userlogin' }">我要救助</router-link>
           </li>
-
           <li class="nav-item">
             <router-link class="nav-link stretch" :to="{ name: 'show' }">动物展示</router-link>
           </li>
@@ -47,7 +46,6 @@
           <li class="nav-item">
             <router-link class="nav-link stretch" :to="{ name: 'anishow' }">我要领养</router-link>
           </li>
-
           <li class="nav-item dropdown">
             <div class="nav-link stretch dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">

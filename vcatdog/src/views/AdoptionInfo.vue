@@ -1,12 +1,12 @@
 <template>
+  <!-- <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
   <UNavBar />
   <div class="container center-in-center">
     <div class="card">
       <div class="row g-0">
-
         <div class="col-md-6">
           <div class="container-fluid">
-            <img :src="photo" class="img-fluid" style="border-radius: 72px;">
+            <img :src="photo" class="img-fluid" style="border-radius: 72px;margin-top: 5em;width: 100%;">
           </div>
         </div>
         <div class="col-md-6">
@@ -74,13 +74,14 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
+                <button type="button" class="btn btn-dark control col-sm-3" @click="apply">申请领养</button>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" id="inputEmail3" disabled>
                 </div>
-                <button type="button" class="btn btn-dark control col-sm-3">申请领养</button>
+                <router-link type="button" class="btn btn-dark control col-sm-3" :to="{ name: 'anishow' }">返回
+                </router-link>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3">
+                  <input type="text" class="form-control" id="inputEmail3" disabled>
                 </div>
               </div>
             </form>
@@ -94,7 +95,9 @@
 <script>
 import UNavBar from '../components/UNavBar';
 import { ref } from 'vue';
+import router from '@/router/index';
 import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 import $ from 'jquery';
 
 
@@ -104,6 +107,7 @@ export default {
     UNavBar
   },
   setup () {
+    const store = useStore();
     let name = ref();
     let photo = ref();
     let fur = ref();
@@ -139,6 +143,17 @@ export default {
         jveyu.value = resp.jveyu;
       },
     });
+    const apply = () => {
+      if (store.state.user.crepoint == 0) {
+        router.push({
+          name: "personalinfo",
+        })
+      }
+      else{
+        
+      }
+    };
+    
     return {
       aniid,
       name,
@@ -153,6 +168,7 @@ export default {
       sex,
       cd,
       jveyu,
+      apply,
     }
   }
 }
