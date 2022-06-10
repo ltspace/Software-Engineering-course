@@ -29,6 +29,8 @@ from acatdog.views.selectone import AniOne
 from acatdog.views.selectadopt import AdoOne
 from acatdog.views.selectassist import AssOne
 from acatdog.views.changepwd import ChangePwd
+from acatdog.views.adoptsuccess import AdoSuccess
+from acatdog.views.adoptfail import AdoFail
 from django.urls import path, include
 from re import template
 from tempfile import tempdir
@@ -51,6 +53,8 @@ urlpatterns = [
     path('anione/', AniOne.as_view(), name="anione"),
     path('adoone/', AdoOne.as_view(), name="adoone"),
     path('assone/', AssOne.as_view(), name="assone"),
+    path('adosucc/', AdoSuccess.as_view(), name="adosucc"),
+    path('adofail/', AdoFail.as_view(), name="adofail"),
     path('userinfoselfchge/', UserInfoSelfChge.as_view(), name="userinfoselfchge"),
     path('saveadopt/', SaveAdopt.as_view(), name="saveadopt"),
     path('changepwdapi/', ChangePwd.as_view(), name="changepwd"),

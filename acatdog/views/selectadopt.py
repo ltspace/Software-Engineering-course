@@ -10,7 +10,7 @@ class AdoOne(APIView):
             # me_id = request.user.id
             adopt = AdoptInfo.objects.get(领养单编号=adoptid)
             return Response({
-                'state':adopt.领养状态,
+                'status':adopt.领养状态,
                 'day':adopt.领养日期,
                 'username':adopt.用户名,
                 # 'aniid' : aniid,

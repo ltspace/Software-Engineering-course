@@ -76,12 +76,9 @@
               </div>
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">领养编号</label>
-                <!-- <button type="button" class="btn btn-dark control col-sm-3" >申请领养</button> -->
                 <div class="col-sm-4">
                   <input type="text" class="form-control" id="inputEmail3" :value="adoptid" disabled>
                 </div>
-                <!-- <a type="button" class="btn btn-dark control col-sm-3" href="/#/anishow/">返回
-                </a> -->
                 <label for="inputEmail3" class="col-sm-2 col-form-label">领养日期</label>
                 <div class="col-sm-4">
                   <input type="text" class="form-control" id="inputEmail3" :value="day" disabled>
@@ -89,29 +86,34 @@
               </div>
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">领养用户</label>
-                <!-- <button type="button" class="btn btn-dark control col-sm-3" >申请领养</button> -->
                 <div class="col-sm-4">
                   <input type="text" class="form-control" id="inputEmail3" :value="username" disabled>
                 </div>
-                <!-- <a type="button" class="btn btn-dark control col-sm-3" href="/#/anishow/">返回
-                </a> -->
                 <label for="inputEmail3" class="col-sm-2 col-form-label">领养状态</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" :value="state" disabled>
+                  <input type="text" class="form-control" id="inputEmail3" :value="status" disabled>
                 </div>
               </div>
+              <!-- <div class="form-group row" v-if="!state"> -->
+              <!-- <button type="button" class="btn btn-dark control col-sm-3" @click="adosuccess" disabled>领养成功</button>
+                <div class="col-sm-1">
+                </div>
+                <button type="button" class="btn btn-dark control col-sm-3" @click="assist" disabled>查看救助信息</button>
+                <div class="col-sm-1">
+                </div>
+                <button type="button" class="btn btn-dark control col-sm-3" @click="adofail" disabled>领养失败</button>
+                <div class="col-sm-1">
+                </div> -->
+              <!-- </div>-->
               <div class="form-group row">
-                <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">领养用户</label> -->
-                <button type="button" class="btn btn-dark control col-sm-3">领养成功</button>
-                <div class="col-sm-1">
-                </div>
+              <button type="button" class="btn btn-dark control col-sm-3" @click="adosuccess">领养成功</button>
+              <div class="col-sm-1">
+              </div>
 
-                <button type="button" class="btn btn-dark control col-sm-3" @click="assist">查看救助信息</button>
-                <div class="col-sm-1">
-                </div>
-                <button type="button" class="btn btn-dark control col-sm-3">领养失败</button>
-                <div class="col-sm-1">
-                </div>
+              <button type="button" class="btn btn-dark control col-sm-3" @click="assist">查看救助信息</button>
+              <div class="col-sm-1">
+              </div>
+              <button type="button" class="btn btn-dark control col-sm-3" @click="adofail">领养失败</button>
               </div>
             </form>
           </div>
@@ -149,7 +151,7 @@ export default {
     let cd = ref();
     let jveyu = ref();
     let phonum = ref();
-    let state = ref();
+    let status = ref();
     let username = ref();
     let day = ref();
     const route = useRoute();
@@ -183,33 +185,77 @@ export default {
         adoptid: adoptid,
       },
       success (resp) {
-        state.value = resp.state;
+        status.value = resp.status;
         day.value = resp.day;
         username.value = resp.username;
-        if (state.value === "正在领养") {
+        if (status.value === "正在领养") {
           alert("您要领养的动物正在救助者所在地址生活!\n请点击下方查看救助信息按钮查询救助者信息，以进行领养对接");
         }
       },
     });
-    function assist()
-    {
-      $.ajax({
-        url: "http://127.0.0.1:8000/assone/",
-        type: "GET",
-        data: {
-          aniid: aniid,
-        },
-        success (resp) {
-          console.log(resp);
-          phonum.value = resp.phonum;
-          alert("救助者的手机号是：" + phonum.value + "，请尽快与他联系，商讨领养事宜！\n领养成功或失败请点击下方对应按钮！")
-        },
-      });
+    function assist () {
+      if (status.value != "正在领养") {
+        alert("领养完毕！您无法再查看救助者信息！");
+      }
+      else {
+        $.ajax({
+          url: "http://127.0.0.1:8000/assone/",
+          type: "GET",
+          data: {
+            aniid: aniid,
+          },
+          success (resp) {
+            // console.log(resp);
+            phonum.value = resp.phonum;
+            alert("救助者的手机号是：" + phonum.value + "，请尽快与他联系，商讨领养事宜！\n领养成功或失败请点击下方对应按钮！")
+          },
+        });
+      }
+    }
+    function adosuccess () {
+      if (status.value != "正在领养") {
+        alert("领养完毕！您无法再次修改！");
+      }
+      else {
+        var photo = prompt("您想将自己与已领养的动物合照展示在网站的照片墙吗?若想,请输入照片url:", "");
+        $.ajax({
+          url: "http://127.0.0.1:8000/adosucc/",
+          type: "POST",
+          data: {
+            photo: photo,
+            adoptid: adoptid,
+            aniid: aniid,
+          },
+          success () {
+            alert("恭喜您领养成功！");
+            window.location.reload();
+          },
+        });
+      }
+    }
+    function adofail () {
+      if (status.value != "正在领养") {
+        alert("领养完毕！您无法再次修改！");
+      }
+      else {
+        $.ajax({
+          url: "http://127.0.0.1:8000/adofail/",
+          type: "POST",
+          data: {
+            adoptid: adoptid,
+            aniid: aniid,
+          },
+          success () {
+            alert("可以去看看其它可领养的动物！");
+            window.location.reload();
+          },
+        });
+      }
     }
     return {
       username,
       adoptid,
-      state,
+      status,
       day,
       aniid,
       name,
@@ -226,6 +272,8 @@ export default {
       jveyu,
       alert,
       assist,
+      adofail,
+      adosuccess,
     }
   },
 
@@ -238,16 +286,6 @@ export default {
   color: black;
 }
 
-.carousel {
-
-  width: 100rem;
-  text-align: center;
-  border-radius: 20%;
-
-  transform-origin: 0 0;
-  font-weight: bolder;
-  letter-spacing: 3px;
-}
 
 .card {
   background: linear-gradient(180deg, rgba(251, 200, 212, 1) 0%, rgba(151, 149, 240, 1) 100%);
