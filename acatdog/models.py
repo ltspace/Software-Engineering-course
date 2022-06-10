@@ -3,7 +3,7 @@ from django.db import models
 
 
 class AdoptInfo(models.Model):
-    用户id = models.IntegerField(db_column='用户ID')
+    用户名 = models.CharField(db_column='用户名',max_length=50,default="admin")
     领养日期 = models.DateTimeField()
     动物id = models.IntegerField(db_column='动物ID') 
     领养单编号 = models.AutoField(primary_key=True)

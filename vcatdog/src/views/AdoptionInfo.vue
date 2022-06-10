@@ -155,13 +155,14 @@ export default {
       }
       else {
         $.ajax({
-          url: "http://127.0.0.1:8000/saveadoption/",
+          url: "http://127.0.0.1:8000/saveadopt/",
           type: "GET",
           data: {
             username: store.state.user.username,
             aniid: aniid,
           },
           success (resp) {
+            console.log(resp.adoptid);
             adoptid.value = resp.adoptid;
             if (confirm("领养单申请成功!点击确定跳转到您的领养单界面查看救助者信息！")) {
               router.push({

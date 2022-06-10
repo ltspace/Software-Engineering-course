@@ -2,51 +2,40 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from acatdog.models import AdoptInfo
 from acatdog.models import AnimalInfo
+from acatdog.models import AssistInfo
 from django.contrib.auth.models import User
 import datetime
 
 
-# 先存动物 后存救助单
+# 存领养单 给用户返回领养单编号
 
 
 class SaveAdopt(APIView):
-    def post(self, request):
-        data = request.POST
-        username = data.get("username", "").strip()
-        name = data.get("name","").strip()
-        photo = data.get("photo","").strip()
-        fur = data.get("fur","").strip()
-        age = data.get("age","").strip()
-        chara = data.get("chara","").strip()
-        type = data.get("type","").strip()
-        vacc = data.get("vacc","").strip()
-        ill = data.get("ill","").strip()
-        addr = data.get("addr","").strip()
-        sex = data.get("sex","").strip()
-        cd = data.get("cd","").strip()
-        jveyu = data.get("jveyu","").strip()
-        can_adopt = data.get("can_adopt","").strip()
+    def get(self, request):
+        aniid = int(request.GET.get('aniid', 1))
+        username = int(request.GET.get('username', 1))
+        animal = AnimalInfo.objects.filter(动物id=aniid).update()
+        # assit = AssistInfo.objects.get(动物id=aniid)
 
-        # 存动物
-        
-        if not cd and can_adopt=="可":
-            return Response({
-                'result': "选择可领养，需要填写您的电话信息，方便领养人与您联系"
-            })
-        if not addr and can_adopt=="可":
-            return Response({
-                'result': "选择可领养，需要填写您的地址，方便领养人与您联系"
-            })
-
-        ani=AnimalInfo.objects.create(name=name,photo=photo,fur=fur,age=age,chara=chara,
-        type=type,vacc=vacc,ill=ill,addr=addr,sex=sex,cd=cd,jveyu=jveyu,can_adopt=can_adopt)
-        
-
-        # 存救助表
-        obj = User.objects.get(username=username)  # 获取user username
-        ass = AssistInfo.objects.create(动物id=ani.动物id,救助日期=datetime.datetime.now(),用户名=username)
+        # 存领养表
+        ass = AdoptInfo.objects.create(动物id=aniid,领养日期=datetime.datetime.now(),用户名=username,领养状态="正在领养")
 
         return Response({
-            'result': "填写救助单成功!您救助的动物id是:"+str(ani.动物id)+"。"
+          'adoptid':ass.领养单编号
         })
+            #         return Response({
+            #     # 'aniid' : aniid,
+            #     'name': animals.name,
+            #     'photo': animals.photo,
+            #     'fur': animals.fur,
+            #     'age': animals.age,
+            #     'chara': animals.chara,
+            #     'type': animals.type,
+            #     'vacc': animals.vacc,
+            #     'ill': animals.ill,
+            #     'addr': animals.addr,
+            #     'sex': animals.sex,
+            #     'cd': animals.cd,
+            #     'jveyu': animals.jveyu,
+            # })
 

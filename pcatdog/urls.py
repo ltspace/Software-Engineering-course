@@ -23,6 +23,7 @@ from acatdog.views.getInfo import GetInfo
 from acatdog.views.register import PlayerView
 from acatdog.views.userinfoselfchge import UserInfoSelfChge
 from acatdog.views.savehelpfrom import SaveAssist
+from acatdog.views.saveadoption import SaveAdopt
 from acatdog.views.selectsix import AniList
 from acatdog.views.selectone import AniOne
 from django.urls import path, include
@@ -46,4 +47,5 @@ urlpatterns = [
     path('anilist/', AniList.as_view(), name="anilist"),
     path('anione/', AniOne.as_view(), name="anilone"),
     path('userinfoselfchge/', UserInfoSelfChge.as_view(), name="userinfoselfchge"),
+    path('saveadopt/', SaveAdopt.as_view(), name="saveadopt"),
 ]

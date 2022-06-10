@@ -49,7 +49,7 @@ export default {
       type: "get",
       success (resp) {
         animals.value = resp;
-        console.log(resp);
+        // console.log(resp);
       }
     });
 
