@@ -26,6 +26,8 @@ from acatdog.views.savehelpfrom import SaveAssist
 from acatdog.views.saveadoption import SaveAdopt
 from acatdog.views.selectsix import AniList
 from acatdog.views.selectone import AniOne
+from acatdog.views.selectadopt import AdoOne
+from acatdog.views.selectassist import AssOne
 from acatdog.views.changepwd import ChangePwd
 from django.urls import path, include
 from re import template
@@ -46,7 +48,9 @@ urlpatterns = [
     path('register/', PlayerView.as_view(), name="register"),
     path('saveassit/', SaveAssist.as_view(), name="saveassit"),
     path('anilist/', AniList.as_view(), name="anilist"),
-    path('anione/', AniOne.as_view(), name="anilone"),
+    path('anione/', AniOne.as_view(), name="anione"),
+    path('adoone/', AdoOne.as_view(), name="adoone"),
+    path('assone/', AssOne.as_view(), name="assone"),
     path('userinfoselfchge/', UserInfoSelfChge.as_view(), name="userinfoselfchge"),
     path('saveadopt/', SaveAdopt.as_view(), name="saveadopt"),
     path('changepwdapi/', ChangePwd.as_view(), name="changepwd"),

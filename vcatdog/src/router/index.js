@@ -21,6 +21,7 @@ import UserCheck from '../views/UserCheck.vue'
 import UserCheck1 from '../views/UserCheck1.vue'
 import UserModify from '../views/UserModify.vue'
 import AniShow from '../views/AniShow.vue';
+import AdoptionForm from '../views/AdoptionForm.vue';
 
 
 const routes = [
@@ -92,9 +93,9 @@ const routes = [
     component: AdoptionInfo
   },
   {
-    path: '/adoptionform/:adoptid/',
-    name: 'adoptioninfo',
-    component: AdoptionInfo
+    path: '/adoptionform/:adoptid/:aniid',
+    name: 'adoptionform',
+    component: AdoptionForm
   },
 
 // {

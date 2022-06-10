@@ -1,5 +1,4 @@
 <template>
-  <!-- <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
   <UNavBar />
   <div class="container center-in-center">
     <div class="card">
@@ -11,10 +10,11 @@
         </div>
         <div class="col-md-6">
           <div class="card-body item">
-            <h2 class="card-title" style="margin-bottom: 20px;">Adopt me</h2>
+            <h2 class="card-title"
+              style="margin-bottom: 20px;font-family: Youyuan;font-weight: bolder;letter-spacing: 5px;">领养单</h2>
             <form>
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">动物ID</label>
                 <div class="col-sm-4">
                   <input type="text" class="form-control" id="inputEmail3" :value="aniid" disabled>
                 </div>
@@ -28,6 +28,7 @@
                 <div class="col-sm-4">
                   <input type="text" class="form-control" id="inputEmail3" :value="cd" disabled>
                 </div>
+
                 <label for="inputEmail3" class="col-sm-2 col-form-label">年龄</label>
                 <div class="col-sm-4">
                   <input type="text" class="form-control" id="inputEmail3" :value="age" disabled>
@@ -74,14 +75,42 @@
                 </div>
               </div>
               <div class="form-group row">
-                <button type="button" class="btn btn-dark control col-sm-3" @click="apply">申请领养</button>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" id="inputEmail3" disabled>
-                </div>
-                <a type="button" class="btn btn-dark control col-sm-3" href="/#/anishow/">返回
-                </a>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">领养编号</label>
+                <!-- <button type="button" class="btn btn-dark control col-sm-3" >申请领养</button> -->
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="inputEmail3" disabled>
+                  <input type="text" class="form-control" id="inputEmail3" :value="adoptid" disabled>
+                </div>
+                <!-- <a type="button" class="btn btn-dark control col-sm-3" href="/#/anishow/">返回
+                </a> -->
+                <label for="inputEmail3" class="col-sm-2 col-form-label">领养日期</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="inputEmail3" :value="day" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">领养用户</label>
+                <!-- <button type="button" class="btn btn-dark control col-sm-3" >申请领养</button> -->
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="inputEmail3" :value="username" disabled>
+                </div>
+                <!-- <a type="button" class="btn btn-dark control col-sm-3" href="/#/anishow/">返回
+                </a> -->
+                <label for="inputEmail3" class="col-sm-2 col-form-label">领养状态</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="inputEmail3" :value="state" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">领养用户</label> -->
+                <button type="button" class="btn btn-dark control col-sm-3">领养成功</button>
+                <div class="col-sm-1">
+                </div>
+
+                <button type="button" class="btn btn-dark control col-sm-3" @click="assist">查看救助信息</button>
+                <div class="col-sm-1">
+                </div>
+                <button type="button" class="btn btn-dark control col-sm-3">领养失败</button>
+                <div class="col-sm-1">
                 </div>
               </div>
             </form>
@@ -95,19 +124,18 @@
 <script>
 import UNavBar from '../components/UNavBar';
 import { ref } from 'vue';
-import router from '@/router/index';
+// import router from '@/router/index';
 import { useRoute } from 'vue-router';
-import { useStore } from 'vuex';
+// import { useStore } from 'vuex';
 import $ from 'jquery';
 
 
 export default {
-  name: 'AdoptionInfo',
+  name: 'AdoptionForm',
   components: {
     UNavBar
   },
   setup () {
-    const store = useStore();
     let name = ref();
     let photo = ref();
     let fur = ref();
@@ -120,9 +148,13 @@ export default {
     let sex = ref();
     let cd = ref();
     let jveyu = ref();
-    let adoptid = ref();
+    let phonum = ref();
+    let state = ref();
+    let username = ref();
+    let day = ref();
     const route = useRoute();
     const aniid = route.params.aniid;
+    const adoptid = route.params.adoptid;
     $.ajax({
       url: "http://127.0.0.1:8000/anione/",
       type: "GET",
@@ -144,44 +176,41 @@ export default {
         jveyu.value = resp.jveyu;
       },
     });
-    const apply = () => {
-      if (store.state.user.crepoint == 0) {
-        if (confirm("您还没有完善个人信息,信用积分为0,无法领养!点击确定跳转到完善个人信息页面!")) {
-          router.push({
-            name: "personalinfo",
-          })
+    $.ajax({
+      url: "http://127.0.0.1:8000/adoone/",
+      type: "GET",
+      data: {
+        adoptid: adoptid,
+      },
+      success (resp) {
+        state.value = resp.state;
+        day.value = resp.day;
+        username.value = resp.username;
+        if (state.value === "正在领养") {
+          alert("您要领养的动物正在救助者所在地址生活!\n请点击下方查看救助信息按钮查询救助者信息，以进行领养对接");
         }
-      }
-      else {
-        $.ajax({
-          url: "http://127.0.0.1:8000/saveadopt/",
-          type: "GET",
-          data: {
-            username: store.state.user.username,
-            aniid: aniid,
-          },
-          success (resp) {
-            // console.log(resp.adoptid);
-            adoptid= resp.adoptid;
-            if (confirm("领养单申请成功!点击确定跳转到您的领养单界面,查看救助者信息！")) {
-              router.push({
-                name: "adoptionform",
-                params: {
-                  adoptid,
-                  aniid
-                }
-              })
-            }
-          },
-          error (resp) {
-            alert(resp);
-          }
-        });
-
-      }
-    };
-
+      },
+    });
+    function assist()
+    {
+      $.ajax({
+        url: "http://127.0.0.1:8000/assone/",
+        type: "GET",
+        data: {
+          aniid: aniid,
+        },
+        success (resp) {
+          console.log(resp);
+          phonum.value = resp.phonum;
+          alert("救助者的手机号是：" + phonum.value + "，请尽快与他联系，商讨领养事宜！\n领养成功或失败请点击下方对应按钮！")
+        },
+      });
+    }
     return {
+      username,
+      adoptid,
+      state,
+      day,
       aniid,
       name,
       photo,
@@ -195,9 +224,11 @@ export default {
       sex,
       cd,
       jveyu,
-      apply,
+      alert,
+      assist,
     }
-  }
+  },
+
 }
 
 </script>
@@ -237,7 +268,7 @@ export default {
 .form-control {
   background: transparent;
   font-size: large;
-  border-width: 0;
+  border-width: 0px;
 }
 
 

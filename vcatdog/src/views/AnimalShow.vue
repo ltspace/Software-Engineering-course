@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div style=" height:100%; overflow:auto">
   <UNavBar />
   <div class="container">
@@ -96,4 +96,4 @@ export default {
   box-shadow: 2px 2px 10px grey;
   transition:500ms;
 }
-</style>
+</style> -->

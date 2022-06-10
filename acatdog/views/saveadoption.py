@@ -23,19 +23,5 @@ class SaveAdopt(APIView):
         return Response({
           'adoptid':ass.领养单编号
         })
-            #         return Response({
-            #     # 'aniid' : aniid,
-            #     'name': animals.name,
-            #     'photo': animals.photo,
-            #     'fur': animals.fur,
-            #     'age': animals.age,
-            #     'chara': animals.chara,
-            #     'type': animals.type,
-            #     'vacc': animals.vacc,
-            #     'ill': animals.ill,
-            #     'addr': animals.addr,
-            #     'sex': animals.sex,
-            #     'cd': animals.cd,
-            #     'jveyu': animals.jveyu,
-            # })
+
 
