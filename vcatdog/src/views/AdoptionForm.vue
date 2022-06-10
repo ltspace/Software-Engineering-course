@@ -94,26 +94,15 @@
                   <input type="text" class="form-control" id="inputEmail3" :value="status" disabled>
                 </div>
               </div>
-              <!-- <div class="form-group row" v-if="!state"> -->
-              <!-- <button type="button" class="btn btn-dark control col-sm-3" @click="adosuccess" disabled>领养成功</button>
-                <div class="col-sm-1">
-                </div>
-                <button type="button" class="btn btn-dark control col-sm-3" @click="assist" disabled>查看救助信息</button>
-                <div class="col-sm-1">
-                </div>
-                <button type="button" class="btn btn-dark control col-sm-3" @click="adofail" disabled>领养失败</button>
-                <div class="col-sm-1">
-                </div> -->
-              <!-- </div>-->
               <div class="form-group row">
-              <button type="button" class="btn btn-dark control col-sm-3" @click="adosuccess">领养成功</button>
-              <div class="col-sm-1">
-              </div>
+                <button type="button" class="btn btn-dark control col-sm-3" @click="adosuccess">领养成功</button>
+                <div class="col-sm-1">
+                </div>
 
-              <button type="button" class="btn btn-dark control col-sm-3" @click="assist">查看救助信息</button>
-              <div class="col-sm-1">
-              </div>
-              <button type="button" class="btn btn-dark control col-sm-3" @click="adofail">领养失败</button>
+                <button type="button" class="btn btn-dark control col-sm-3" @click="assist">查看救助信息</button>
+                <div class="col-sm-1">
+                </div>
+                <button type="button" class="btn btn-dark control col-sm-3" @click="adofail">领养失败</button>
               </div>
             </form>
           </div>

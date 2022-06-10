@@ -25,6 +25,7 @@ from acatdog.views.userinfoselfchge import UserInfoSelfChge
 from acatdog.views.savehelpfrom import SaveAssist
 from acatdog.views.saveadoption import SaveAdopt
 from acatdog.views.selectsix import AniList
+from acatdog.views.selectphoto import AdoList
 from acatdog.views.selectone import AniOne
 from acatdog.views.selectadopt import AdoOne
 from acatdog.views.selectassist import AssOne
@@ -50,6 +51,7 @@ urlpatterns = [
     path('register/', PlayerView.as_view(), name="register"),
     path('saveassit/', SaveAssist.as_view(), name="saveassit"),
     path('anilist/', AniList.as_view(), name="anilist"),
+    path('photolist/', AdoList.as_view(), name="photolist"),
     path('anione/', AniOne.as_view(), name="anione"),
     path('adoone/', AdoOne.as_view(), name="adoone"),
     path('assone/', AssOne.as_view(), name="assone"),
