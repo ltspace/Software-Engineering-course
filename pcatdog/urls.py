@@ -26,6 +26,7 @@ from acatdog.views.savehelpfrom import SaveAssist
 from acatdog.views.saveadoption import SaveAdopt
 from acatdog.views.selectsix import AniList
 from acatdog.views.selectone import AniOne
+from acatdog.views.changepwd import ChangePwd
 from django.urls import path, include
 from re import template
 from tempfile import tempdir
@@ -48,4 +49,5 @@ urlpatterns = [
     path('anione/', AniOne.as_view(), name="anilone"),
     path('userinfoselfchge/', UserInfoSelfChge.as_view(), name="userinfoselfchge"),
     path('saveadopt/', SaveAdopt.as_view(), name="saveadopt"),
+    path('changepwdapi/', ChangePwd.as_view(), name="changepwd"),
 ]

@@ -78,8 +78,8 @@
                 <div class="col-sm-3">
                   <input type="text" class="form-control" id="inputEmail3" disabled>
                 </div>
-                <router-link type="button" class="btn btn-dark control col-sm-3" :to="{ name: 'anishow' }">返回
-                </router-link>
+                <a type="button" class="btn btn-dark control col-sm-3" href="/#/anishow/">返回
+                </a>
                 <div class="col-sm-4">
                   <input type="text" class="form-control" id="inputEmail3" disabled>
                 </div>
@@ -111,7 +111,6 @@ export default {
     let name = ref();
     let photo = ref();
     let fur = ref();
-
     let age = ref();
     let chara = ref();
     let type = ref();
@@ -164,7 +163,7 @@ export default {
           success (resp) {
             console.log(resp.adoptid);
             adoptid.value = resp.adoptid;
-            if (confirm("领养单申请成功!点击确定跳转到您的领养单界面查看救助者信息！")) {
+            if (confirm("领养单申请成功!点击确定跳转到您的领养单界面,查看救助者信息！")) {
               router.push({
                 name: "adoptionform",
                 params: {

@@ -76,6 +76,10 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
+              <li><router-link class="nav-link dropdown-item stretch smallcard" :to="{ name: 'changepwd' }">修改密码</router-link></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item stretch smallcard" style="cursor:pointer" @click="logout">退出登录</a></li>
             </ul>
           </li>

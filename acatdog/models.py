@@ -26,7 +26,7 @@ class AnimalInfo(models.Model):
     sex = models.CharField(max_length=11)
     chara = models.CharField(max_length=11, blank=True, null=True)
     addr = models.CharField(max_length=11)
-    can_adopt = models.CharField(max_length=11,default="否")
+    can_adopt = models.IntegerField(default=0)
     jveyu = models.CharField(max_length=11, blank=True, null=True)
     vacc = models.CharField(max_length=11, blank=True, null=True)
     ill = models.CharField(max_length=11, blank=True, null=True)
@@ -79,3 +79,5 @@ class UserInfo(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+

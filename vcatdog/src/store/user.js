@@ -83,7 +83,7 @@ const ModuleUser = {
                         'Authorization': "Bearer " + access,
                     },
                     success(resp,refresh) {
-                      console.log(resp);
+                    //   console.log(resp);
                         context.commit("updateUser", {
                             ...resp,
                             access: access,

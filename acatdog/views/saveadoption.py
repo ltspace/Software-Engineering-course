@@ -2,8 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from acatdog.models import AdoptInfo
 from acatdog.models import AnimalInfo
-from acatdog.models import AssistInfo
-from django.contrib.auth.models import User
+# from acatdog.models import AssistInfo
+# from django.contrib.auth.models import User
 import datetime
 
 
@@ -13,8 +13,8 @@ import datetime
 class SaveAdopt(APIView):
     def get(self, request):
         aniid = int(request.GET.get('aniid', 1))
-        username = int(request.GET.get('username', 1))
-        animal = AnimalInfo.objects.filter(动物id=aniid).update()
+        username = request.GET.get('username', 1)
+        animal = AnimalInfo.objects.filter(动物id=aniid).update(can_adopt=2)
         # assit = AssistInfo.objects.get(动物id=aniid)
 
         # 存领养表

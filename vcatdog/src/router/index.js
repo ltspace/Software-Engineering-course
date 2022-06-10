@@ -5,18 +5,18 @@ import AdminLoginView from '../views/AdminLogin.vue'
 import ContactUs from '../views/ContactUs'
 import UserRegister from '../views/UserRegister.vue'
 import AnimalShow from '../views/AnimalShow.vue'
-import ImproveInfo from '../views/ImproveInfo.vue'
+// import ImproveInfo from '../views/ImproveInfo.vue'
 import ChangePwd from '../views/ChangePwd.vue'
 import PersonalInfo from '../views/PersonalInfo.vue'
 import FillHelpForm from '../views/FillHelpForm.vue'
 import ViewHelpForm from '../views/ViewHelpForm.vue'
 import AdoptionInfo from '../views/AdoptionInfo.vue'
 import NotFound from '../views/NotFound.vue'
-import AdminShow from '../views/AdminShow.vue'
-import AdminCheck from '../views/AdminCheck.vue'
-import AdminModify from '../views/AdminModify.vue'
-import AnimalCheck from '../views/AnimalCheck.vue'
-import AnimalModify from '../views/AnimalModify.vue'
+// import AdminShow from '../views/AdminShow.vue'
+// import AdminCheck from '../views/AdminCheck.vue'
+// import AdminModify from '../views/AdminModify.vue'
+// import AnimalCheck from '../views/AnimalCheck.vue'
+// import AnimalModify from '../views/AnimalModify.vue'
 import UserCheck from '../views/UserCheck.vue'
 import UserCheck1 from '../views/UserCheck1.vue'
 import UserModify from '../views/UserModify.vue'
@@ -54,11 +54,11 @@ const routes = [
     name: 'show',
     component: AnimalShow
   },
-  {
-    path: '/improveinfo/',
-    name: 'improveinfo',
-    component: ImproveInfo
-  },
+  // {
+  //   path: '/improveinfo/',
+  //   name: 'improveinfo',
+  //   component: ImproveInfo
+  // },
   {
 
     path: '/404/',
@@ -91,32 +91,37 @@ const routes = [
     name: 'adoptioninfo',
     component: AdoptionInfo
   },
+  {
+    path: '/adoptionform/:adoptid/',
+    name: 'adoptioninfo',
+    component: AdoptionInfo
+  },
 
-{
-    path: '/Administrator',
-    name: 'Administrator',
-    component: AdminShow
-  },
-  {
-    path: '/admincheck',
-    name: 'admincheck',
-    component: AdminCheck
-  },
-  {
-    path: '/adminModify',
-    name: 'adminModify',
-    component: AdminModify
-  },
-  {
-    path: '/animalCheck',
-    name: 'animalCheck',
-    component: AnimalCheck
-  },
-  {
-    path: '/animalModify',
-    name: 'animalModify',
-    component: AnimalModify
-  },
+// {
+//     path: '/Administrator',
+//     name: 'Administrator',
+//     component: AdminShow
+//   },
+//   {
+//     path: '/admincheck',
+//     name: 'admincheck',
+//     component: AdminCheck
+//   },
+//   {
+//     path: '/adminModify',
+//     name: 'adminModify',
+//     component: AdminModify
+//   },
+  // {
+  //   path: '/animalCheck',
+  //   name: 'animalCheck',
+  //   component: AnimalCheck
+  // },
+  // {
+  //   path: '/animalModify',
+  //   name: 'animalModify',
+  //   component: AnimalModify
+  // },
   {
     path: '/userCheck',
     name: 'userCheck',

@@ -5,7 +5,7 @@ from rest_framework.response import Response
 
 class AniList(APIView):
     def get(self, request):
-        animals = AnimalInfo.objects.filter(can_adopt="可").order_by('动物id')[:6]
+        animals = AnimalInfo.objects.filter(can_adopt="1").order_by('动物id')[:6]
         ani = []
         for animal in animals:
             ani.append({

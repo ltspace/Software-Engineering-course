@@ -101,9 +101,8 @@
           返回主页面</router-link>
       </div>
     </div>
-
   </div>
-  <div class="alert alert-warning"> {{ message }}</div>
+  <!-- <div class="alert alert-warning"> {{ message }}</div> -->
 </template>
 <!-- <script src="..\dist\static\js\jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script> -->
 <script>
@@ -156,10 +155,10 @@ export default {
         jveyu = "未绝育";
       }
       if (selectedadopt == 1) {
-        can_adopt = "可";
+        can_adopt = "1";
       }
       else {
-        can_adopt = "否";
+        can_adopt = "0";
       }
       message.value = "";
       $.ajax({
@@ -184,6 +183,7 @@ export default {
         },
         success (resp) {
             message.value = resp.result;
+            alert(message.value);
         }
       })
     };

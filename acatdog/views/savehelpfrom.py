@@ -29,11 +29,11 @@ class SaveAssist(APIView):
 
         # 存动物
         
-        if not cd and can_adopt=="可":
+        if not cd and can_adopt=="1":
             return Response({
                 'result': "选择可领养，需要填写您的电话信息，方便领养人与您联系"
             })
-        if not addr and can_adopt=="可":
+        if not addr and can_adopt=="1":
             return Response({
                 'result': "选择可领养，需要填写您的地址，方便领养人与您联系"
             })
