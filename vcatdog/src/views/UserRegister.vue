@@ -23,7 +23,8 @@
               <input v-model="password" type="password" class="form-control" placeholder="6-16位密码,区分大小写" />
             </div>
             <div class="form-group zu2">
-              <input v-model="password_confirm" type="password" class="form-control password_confirm" placeholder="确认密码" />
+              <input v-model="password_confirm" type="password" class="form-control password_confirm"
+                placeholder="确认密码" />
             </div>
           </fieldset>
           <div class="container-fluid" style="text-align: center">
@@ -34,15 +35,11 @@
           <button type="submit" class="btn col-md-6">
             <router-link :to="{ name: 'userlogin' }" style="text-decoration: none ">使用已有账户登陆</router-link>
           </button>
-          <div class="alert alert-warning"> {{ message }}</div>
+          <!-- <div class="alert alert-warning "> {{ message }}</div> -->
         </form>
-        
       </div>
-      
     </div>
-    
   </div>
-  
 </template>
 
 
@@ -54,13 +51,13 @@ import $ from 'jquery';
 
 export default {
   name: 'RegisterView',
-  setup() {
+  setup () {
     const store = useStore();
     let username = ref('');
     let password = ref('');
     let password_confirm = ref('');
     let message = ref('');
-    
+
     const register = () => {
       message.value = "";
       $.ajax({
@@ -71,24 +68,26 @@ export default {
           password: password.value,
           password_confirm: password_confirm.value,
         },
-        success(resp) {
+        success (resp) {
           if (resp.result === "success") {
             store.dispatch("login", {
               username: username.value,
               password: password.value,
-              success() {
-                router.push({name: 'home'});
+              success () {
+                router.push({ name: 'home' });
               },
-              error() {
+              error () {
                 message.value = "系统异常，请稍后重试";
               }
             });
           } else {
             message.value = resp.result;
+            alert(message.value);
           }
         }
       })
     };
+
 
     return {
       username,
@@ -96,6 +95,7 @@ export default {
       password_confirm,
       message,
       register,
+      alert,
     }
   }
 }
@@ -104,7 +104,7 @@ export default {
 
 
 <style scoped>
-.alert{
+.alert {
   margin-top: 5em;
 }
 

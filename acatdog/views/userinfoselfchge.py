@@ -18,6 +18,7 @@ class UserInfoSelfChge(APIView):
         job = data.get("job", "").strip()
         photo = data.get("photo", "").strip()
         sex = data.get("sex", "").strip()
+        crepoint = data.get("crepoint","").strip()
         obj = User.objects.get(username=username)
 
         if len(phonum) > 13 :
@@ -29,7 +30,7 @@ class UserInfoSelfChge(APIView):
                 'result' : "邮箱格式不正确"
             })
             
-        ok = UserInfo.objects.filter(id=obj.userinfo.id).update(sex=sex,phonum=phonum,photo=photo,email=email,addr=addr,job=job)
+        ok = UserInfo.objects.filter(id=obj.userinfo.id).update(sex=sex,phonum=phonum,photo=photo,email=email,addr=addr,job=job,crepoint=crepoint)
 
         return Response({
             'result': str(ok)

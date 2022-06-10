@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  name:'HomeCar',
+  name: 'HomeCar',
 }
 </script>
 
@@ -66,5 +66,4 @@ export default {
   font-weight: bolder;
   letter-spacing: 3px;
 }
-
 </style>

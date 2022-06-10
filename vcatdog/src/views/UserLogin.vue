@@ -39,7 +39,7 @@
             <router-link :to="{ name: 'registerview' }" style="text-decoration: none">注册新用户</router-link>
           </label>
         </form>
-        <div class="alert alert-warning"> {{ message }}</div>
+        <!-- <div class="alert alert-warning"> {{ message }}</div> -->
       </div>
     </div>
   </div>
@@ -71,6 +71,7 @@ export default {
         },
         error () {
           message.value = '用户名或密码错误'
+          alert(message.value);
         }
       })
     }

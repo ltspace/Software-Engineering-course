@@ -111,6 +111,7 @@ export default {
     let name = ref();
     let photo = ref();
     let fur = ref();
+
     let age = ref();
     let chara = ref();
     let type = ref();
@@ -120,6 +121,7 @@ export default {
     let sex = ref();
     let cd = ref();
     let jveyu = ref();
+    const adoptid = ref();
     const route = useRoute();
     const aniid = route.params.aniid;
     $.ajax({
@@ -145,15 +147,39 @@ export default {
     });
     const apply = () => {
       if (store.state.user.crepoint == 0) {
-        router.push({
-          name: "personalinfo",
-        })
+        if (confirm("您还没有完善个人信息,信用积分为0,无法领养!点击确定跳转到完善个人信息页面!")) {
+          router.push({
+            name: "personalinfo",
+          })
+        }
       }
-      // else{
+      else {
+        $.ajax({
+          url: "http://127.0.0.1:8000/saveadoption/",
+          type: "GET",
+          data: {
+            username: store.state.user.username,
+            aniid: aniid,
+          },
+          success (resp) {
+            adoptid.value = resp.adoptid;
+            if (confirm("领养单申请成功!点击确定跳转到您的领养单界面查看救助者信息！")) {
+              router.push({
+                name: "adoptionform",
+                params: {
+                  adoptid
+                }
+              })
+            }
+          },
+          error (resp) {
+            alert(resp);
+          }
+        });
 
-      // }
+      }
     };
-    
+
     return {
       aniid,
       name,

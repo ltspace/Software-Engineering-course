@@ -76,7 +76,7 @@
             <div class="mb-3 row">
               <label for="staticEmail" class="col-sm-4 col-form-label">信用积分：</label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" id="exampleFormControlInput1"
+                <input v-model="crepoint" type="text" class="form-control" id="exampleFormControlInput1"
                   :placeholder="$store.state.user.crepoint" disabled
                   style="text-align:center; font-weight:border;letter-spacing: 3px;">
               </div>
@@ -92,9 +92,8 @@
           返回主页面</router-link>
       </div>
     </div>
-
   </div>
-  <div class="alert alert-warning"> {{ message }}</div>
+  <!-- <div class="alert alert-warning"> {{ message }}</div> -->
 </template>
 
 <script>
@@ -115,6 +114,7 @@ export default {
     let job = ref('');
     let message = ref('');
     let photo = ref('');
+    let crepoint = ref('');
     let sex = "男";
     const userinfoselfchge = () => {
       var selectedSex = $('#sex input:radio:checked').val();
@@ -124,47 +124,75 @@ export default {
       else {
         sex = "女";
       }
-
       message.value = "";
-      $.ajax({
-        url: "http://127.0.0.1:8000/userinfoselfchge/",
-        type: "POST",
-        data: {
-          // id: id,
-          username: username,
-          sex: sex,
-          phonum: phonum.value,
-          email: email.value,
-          addr: addr.value,
-          job: job.value,
-          photo: photo.value,
-        },
-        success (resp) {
-          if (resp.result == "1") {
-
-            if (phonum.value != null && email.value != null && addr.value != null && job.value != null) {
-              store.state.user.crepoint = 1;
-              message.value = "更新成功!您的信用积分为1!";
-              store.state.user.phonum = phonum.value;
-              store.state.user.sex = sex.value;
-              store.state.user.photo = photo.value;
-              store.state.user.job = job.value;
-              store.state.user.email = email.value;
-              store.state.user.addr = addr.value;
-            }
-            else {
-              store.state.user.crepoint = 0;
-              message.value = "更新成功!存在部分必要个人领养信息未填,您的信用积分为0!";
-            }
-          } else {
+      if (phonum.value != "" && email.value != "" && addr.value != "" && job.value != "") {
+        crepoint.value="1";
+        $.ajax({
+          url: "http://127.0.0.1:8000/userinfoselfchge/",
+          type: "POST",
+          data: {
+            // id: id,
+            username: username,
+            sex: sex,
+            phonum: phonum.value,
+            email: email.value,
+            addr: addr.value,
+            job: job.value,
+            photo: photo.value,
+            crepoint: crepoint.value,
+          },
+          success () {
+            message.value = "更新成功!您的信用积分为1!";
+            alert(message.value);
+            store.state.user.crepoint=crepoint.value;
+            store.state.user.sex=sex;
+            store.state.user.phonum=phonum.value;
+            store.state.user.addr=addr.value;
+            store.state.user.job=job.value;
+            store.state.user.photo=photo.value;
+          },
+          error (resp) {
             message.value = resp.result;
+            alert(message.value);
           }
-        }
-      })
+        })
+      }
+      else {
+        crepoint.value="0";
+        $.ajax({
+          url: "http://127.0.0.1:8000/userinfoselfchge/",
+          type: "POST",
+          data: {
+            // id: id,
+            username: username,
+            sex: sex,
+            phonum: phonum.value,
+            email: email.value,
+            addr: addr.value,
+            job: job.value,
+            photo: photo.value,
+            crepoint: crepoint.value,
+          },
+          success () {
+            store.state.user.crepoint=crepoint.value;
+            store.state.user.sex=sex;
+            store.state.user.phonum=phonum.value;
+            store.state.user.addr=addr.value;
+            store.state.user.job=job.value;
+            store.state.user.photo=photo.value;
+            message.value = "更新成功!存在部分必要个人领养信息未填,您的信用积分为0!";
+            alert(message.value);
+          },
+          error (resp) {
+            message.value = resp.result;
+            alert(message.value);
+          }
+        })
+      }
     };
-
     return {
       // id,
+      crepoint,
       sex,
       username,
       phonum,
@@ -174,8 +202,8 @@ export default {
       message,
       photo,
       userinfoselfchge,
-    }
-  }
+    };
+  },
 }
 </script>
 
