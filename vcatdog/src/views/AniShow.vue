@@ -7,12 +7,12 @@
       <div class="col" v-for="animal in animals" :key="animal.id" @click="open_user_profile(animal.id)">
         <div class="card" style="cursor:pointer" id="1">
           <img :src="animal.photo" class="card-img-top">
-          <button class="btn btn-primary how">领养我</button>
+          <button class="btn btn-primary how">我叫{{animal.name}},是{{animal.type}},请领养我</button>
         </div>
       </div>
     </div>
   </div>
-  <nav aria-label="Page navigation example">
+  <!-- <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center ">
       <li class="page-item disabled">
         <a class="page-link">&laquo;</a>
@@ -24,7 +24,7 @@
         <a class="page-link" href="#">&raquo;</a>
       </li>
     </ul>
-  </nav>
+  </nav> -->
 </div>
 </template>
 

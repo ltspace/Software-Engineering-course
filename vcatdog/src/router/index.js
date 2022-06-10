@@ -22,6 +22,7 @@ import UserCheck1 from '../views/UserCheck1.vue'
 import UserModify from '../views/UserModify.vue'
 import AniShow from '../views/AniShow.vue';
 import AdoptionForm from '../views/AdoptionForm.vue';
+import AdoptFormView from '../views/Adoptformview.vue'
 
 
 const routes = [
@@ -55,11 +56,11 @@ const routes = [
     name: 'show',
     component: AnimalShow
   },
-  // {
-  //   path: '/improveinfo/',
-  //   name: 'improveinfo',
-  //   component: ImproveInfo
-  // },
+  {
+    path: '/adoptformview/',
+    name: 'adoptformview',
+    component: AdoptFormView
+  },
   {
 
     path: '/404/',

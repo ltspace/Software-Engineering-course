@@ -68,7 +68,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item stretch smallcard" href="/#/viewhelpform/">查看领养单</a></li>
+              <li><a class="dropdown-item stretch smallcard" href="/#/adoptformview/">查看领养单</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -120,9 +120,11 @@ export default {
 </script>
 
 <style scoped>
+
 nav.navbar.navbar-expand-lg.bg-light {
   font-family: YouYuan;
   background-color: transparent !important;
+  font-size: large;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -131,7 +133,7 @@ nav.navbar.navbar-expand-lg.bg-light {
 }
 
 .stretch {
-  transform: scale(1, 1.1);
+  transform: scale(1, 1.15);
   transform-origin: 0 0;
   font-weight: bolder;
   letter-spacing: 3px;
