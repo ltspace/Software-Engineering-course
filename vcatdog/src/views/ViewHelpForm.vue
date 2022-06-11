@@ -1,128 +1,99 @@
 <template>
-  <!-- <link rel="stylesheet" media="screen" href="bootstrap/dist/css/bootstrap.min.css"> -->
-  <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-  <div class="container center-in-center">
-    <div class="row">
-      <div class="col-md-4 center-in-center">
-        <form action="" role="form">
-          <fieldset>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">
-                动物名：
-              </label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="例：旺财">
+  <div style=" height:100%; overflow:auto;">
+    <UNavBar />
+    <div class="container">
+      <h3 style="font-family:Youyuan;text-align: center;">救助单列表</h3>
+      <div class="card" style="cursor:pointer" v-for="assist in assists" :key="assist.num"
+        @click="open_user_profile(assist.num, assist.id)">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-1 img-field">
+              <img class="img-fluid" :src="assist.photo" alt="">
             </div>
-            <div class="mb-3">
-              <label for="formFile" class="form-label">照片:</label>
-              <input class="form-control" type="file" id="formFile">
+            <div class="col-11">
+              <div class="username">救助单编号：{{ assist.num }}</div>
+              <div class="username">救助日期：{{ assist.day }}</div>
+              <!-- <div class="username">救助状态：{{ assist.state }}</div> -->
+              <!-- <div class="follower-count">{{ user.followerCount }}</div> -->
             </div>
-            <div class="form-group zu2">
-              <label for="formFile" class="form-label">性别:&emsp;&emsp;&emsp;&emsp;</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                  value="option1">
-                <label class="form-check-label" for="inlineRadio1">公</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                  value="option2">
-                <label class="form-check-label" for="inlineRadio2">母</label>
-              </div>
-            </div>
-            <div class="form-group zu2">
-              <label for="formFile" class="form-label">动物类别:&emsp;&emsp;</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                  value="option1">
-                <label class="form-check-label" for="inlineRadio1">猫</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                  value="option2">
-                <label class="form-check-label" for="inlineRadio2">狗</label>
-              </div>
-            </div>
-            <div class="form-group zu2">
-              <label for="exampleFormControlInput1" class="form-label">品种：</label>
-              <input type="text" class="form-control" placeholder="例：哈士奇" />
-            </div>
-            <div class="form-group zu2">
-              <label for="exampleFormControlInput1" class="form-label">毛色：</label>
-              <input type="text" class="form-control" placeholder="例：黑白相间" />
-            </div>
-            <div class="form-group zu2">
-              <label for="exampleFormControlInput1" class="form-label">年龄：</label>
-              <input type="text" class="form-control" placeholder="例：6个月" />
-            </div>
-            <div class="form-group zu2">
-              <label for="exampleFormControlInput1" class="form-label">性格：</label>
-              <input type="text" class="form-control" placeholder="例：过于活泼" />
-            </div>
-            <div class="form-group zu2">
-              <label for="formFile" class="form-label">绝育情况:&emsp;&emsp;</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                  value="option1">
-                <label class="form-check-label" for="inlineRadio1">已绝育</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                  value="option2">
-                <label class="form-check-label" for="inlineRadio2">未绝育</label>
-              </div>
-            </div>
-            <div class="form-group zu2">
-              <label for="exampleFormControlInput1" class="form-label">疫苗情况：</label>
-              <input type="text" class="form-control" placeholder="例：已打狂犬疫苗" />
-            </div>
-            <div class="form-group zu2">
-              <label for="exampleFormControlInput1" class="form-label">疾病情况：</label>
-              <input type="text" class="form-control" placeholder="例：健康" />
-            </div>
-            <div class="form-group zu2">
-              <label for="exampleFormControlInput1" class="form-label">地址：</label>
-              <input type="text" class="form-control" placeholder="例：山东大学（威海）18号楼312宿舍" />
-            </div>
-          </fieldset>
-          <div class="container-fluid" style="text-align: center">
-            <button type="submit" class="btn btn-primary col-md-12">
-              提交
-            </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="vzu1">
-    <div class="mb-3 row">
-      <label class="" slogan>查看救助单</label>
-    </div>
-    <span class="badge text-bg-primary">动物ID:</span>
-    <span class="badge text-bg-info">002</span>
 
-    <span class="badge text-bg-primary">领养情况</span>
-    <span class="badge text-bg-info">否</span>
+    <!-- <div class="row row-cols-1 row-cols-md-3 g-4 ">
+      <div class="col" v-for="assist in assists" :key="assist.id" @click="open_user_profile(assist.id)">
+        <div class="card" style="cursor:pointer" id="1">
+          <img :src="assist.photo" class="card-img-top">
+          <button class="btn btn-primary how">救助我</button>
+        </div>
+      </div>
+    </div> -->
 
+    <!-- <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center ">
+        <li class="page-item disabled">
+          <a class="page-link">&laquo;</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">&raquo;</a>
+        </li>
+      </ul>
+    </nav> -->
   </div>
 </template>
 
+
 <script>
-// import HelpForm from '../components/HelpForm';
+import $ from 'jquery';
+import { ref } from 'vue';
+import router from '@/router/index';
+import { useStore } from 'vuex';
+import UNavBar from '../components/UNavBar.vue'
 export default {
   name: 'ViewHelpForm',
   components: {
-    // HelpForm
+    UNavBar
+  },
+  setup () {
+    const store = useStore();
+    let assists = ref([]);
+    const username = store.state.user.username;
+    $.ajax({
+      url: 'http://127.0.0.1:8000/assistlist/',
+      type: "get",
+      data: {
+        username: username,
+      },
+      success (resp) {
+        assists.value = resp;
+        // console.log(resp);
+      }
+    });
+
+    const open_user_profile = (assistid, aniid) => {
+      router.push({
+        name: "assistani",
+        params: {
+          assistid,
+          aniid
+        }
+      })
+    };
+    return {
+      assists,
+      open_user_profile
+    };
   }
 }
+
 </script>
 
-<style scoped>
-.vzu1 {
-  position: absolute;
-  left: 200px;
-  top: 60px;
-}
 
+<style scoped>
 .center-in-center {
   position: absolute;
   top: 50%;
@@ -134,35 +105,29 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-.zu1 {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+.how {
+  background: linear-gradient(90deg, rgba(255, 236, 210, 1) 0%, rgba(252, 182, 159, 1) 100%);
+  border-radius: 5%;
+  border-color: transparent;
+  color: black;
 }
 
-.zu2 {
-  padding-bottom: 1px;
+.card {
+  background: linear-gradient(90deg, rgba(227, 253, 245, 1) 0%, rgba(255, 230, 250, 1) 100%);
+  margin-bottom: 20px;
+  font-weight: bolder;
+  font-family:Youyuan;
 }
 
-.zu3 {
-  padding-top: 2em;
+.card:hover {
+  box-shadow: 2px 2px 10px grey;
+  transition: 500ms;
 }
 
-.head {
-  transform: scale(1, 1.1);
-  text-align: center;
+.img-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-
-.slogan {
-  font-size: 1px;
-  color: grey;
-  transform: scale(1, 1.1);
-}
-
-.padd {
-  /* padding-top: 5px; */
-  /* padding-bottom: 1em; */
-  padding-left: 20em;
-  font-weight: normal;
-}
 </style>

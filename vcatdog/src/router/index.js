@@ -12,6 +12,7 @@ import FillHelpForm from '../views/FillHelpForm.vue'
 import ViewHelpForm from '../views/ViewHelpForm.vue'
 import AdoptionInfo from '../views/AdoptionInfo.vue'
 import NotFound from '../views/NotFound.vue'
+import AssistAni from '../views/AssitAni.vue'
 // import AdminShow from '../views/AdminShow.vue'
 // import AdminCheck from '../views/AdminCheck.vue'
 // import AdminModify from '../views/AdminModify.vue'
@@ -99,11 +100,11 @@ const routes = [
     component: AdoptionForm
   },
 
-// {
-//     path: '/Administrator',
-//     name: 'Administrator',
-//     component: AdminShow
-//   },
+{
+    path: '/assistani/:assistid/:aniid',
+    name: 'assistani',
+    component: AssistAni
+  },
 //   {
 //     path: '/admincheck',
 //     name: 'admincheck',

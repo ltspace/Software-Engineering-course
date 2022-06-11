@@ -23,6 +23,7 @@ class AniOne(APIView):
                 'sex': animals.sex,
                 'cd': animals.cd,
                 'jveyu': animals.jveyu,
+                'can_adopt':animals.can_adopt,
             })
       except:
           return Response({

@@ -27,7 +27,9 @@ from acatdog.views.saveadoption import SaveAdopt
 from acatdog.views.selectsix import AniList
 from acatdog.views.selectphoto import AdoList
 from acatdog.views.selectone import AniOne
+from acatdog.views.assistfrom import AssistOne
 from acatdog.views.selectadopt import AdoOne
+from acatdog.views.selectassistform import AssistList
 from acatdog.views.selectmyadopt import AdoptList
 from acatdog.views.selectassist import AssOne
 from acatdog.views.changepwd import ChangePwd
@@ -53,6 +55,8 @@ urlpatterns = [
     path('saveassit/', SaveAssist.as_view(), name="saveassit"),
     path('anilist/', AniList.as_view(), name="anilist"),
     path('photolist/', AdoList.as_view(), name="photolist"),
+    path('assistlist/', AssistList.as_view(), name="assistlist"),
+    path('assistone/', AssistOne.as_view(), name="assistone"),
     path('anione/', AniOne.as_view(), name="anione"),
     path('adoone/', AdoOne.as_view(), name="adoone"),
     path('assone/', AssOne.as_view(), name="assone"),

@@ -16,6 +16,7 @@ class AssOne(APIView):
 
             return Response({
                 'phonum':player.phonum,
+                
             })
     #   except:
     #       return Response({
