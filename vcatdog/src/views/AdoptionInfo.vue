@@ -78,7 +78,7 @@
                 <div class="col-sm-3">
                   <input type="text" class="form-control" id="inputEmail3" disabled>
                 </div>
-                <a type="button" class="btn btn-dark control col-sm-3" href="/#/anishow/">返回
+                <a type="button" class="btn btn-dark control col-sm-3" href="/anishow/">返回
                 </a>
                 <div class="col-sm-4">
                   <input type="text" class="form-control" id="inputEmail3" disabled>

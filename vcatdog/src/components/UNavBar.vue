@@ -64,11 +64,11 @@
               {{ $store.state.user.username }}
             </div>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item stretch smallcard" href="/#/viewhelpform/">查看救助单</a></li>
+              <li><router-link class="dropdown-item stretch smallcard" :to="{ name: 'viewhelpform' }">查看救助单</router-link></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item stretch smallcard" href="/#/adoptformview/">查看领养单</a></li>
+              <li><router-link class="dropdown-item stretch smallcard" :to="{ name: 'adoptformview' }">查看领养单</router-link></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

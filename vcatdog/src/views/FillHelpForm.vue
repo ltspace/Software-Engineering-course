@@ -108,7 +108,7 @@
 <script>
 import { ref } from 'vue';
 import { useStore } from 'vuex';
-// import router from '@/router/index';
+import router from '@/router/index';
 import $ from 'jquery';
 
 export default {
@@ -182,8 +182,12 @@ export default {
           jveyu: jveyu,
         },
         success (resp) {
-            message.value = resp.result;
-            alert(message.value);
+          message.value = resp.result;
+          if (confirm(message.value)) {
+            router.push({
+              name: "viewhelpform",
+            })
+          }
         }
       })
     };

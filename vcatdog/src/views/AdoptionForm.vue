@@ -115,7 +115,7 @@
 <script>
 import UNavBar from '../components/UNavBar';
 import { ref } from 'vue';
-// import router from '@/router/index';
+import router from '@/router/index';
 import { useRoute } from 'vue-router';
 // import { useStore } from 'vuex';
 import $ from 'jquery';
@@ -217,7 +217,9 @@ export default {
           },
           success () {
             alert("恭喜您领养成功！");
-            window.location.reload();
+            router.push({
+              name: "adoptformview",
+            })
           },
         });
       }
@@ -236,7 +238,9 @@ export default {
           },
           success () {
             alert("可以去看看其它可领养的动物！");
-            window.location.reload();
+            router.push({
+              name: "adoptformview",
+            })
           },
         });
       }
