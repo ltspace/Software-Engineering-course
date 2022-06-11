@@ -14,27 +14,18 @@
           </div>
           <div class="carousel-inner">
             <h3>待救助动物</h3>
-            <div class="carousel-item active">
-              <img src="../assets/R-C.jpg" class="d-block w-100" style="border-radius: 5%" alt="...">
+            <div class="carousel-item active" v-for="wait0 in waits" :key="wait0.id">
+              <img :src="wait0.img" class="d-block w-100" style="border-radius: 5%" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h1>最后出现地点：汤臣一品东侧花坛</h1>
-                <h3>症状：走路不稳，流清涕</h3>
+                <h1>最后出现地点：{{ wait0.addr }}</h1>
+                <h3>症状：{{ wait0.sym }}</h3>
               </div>
             </div>
-            <div class="carousel-item ">
-              <img src="../assets/R-C.jpg" class="d-block w-100" style="border-radius: 5%" alt="...">
+            <div class="carousel-item" v-for="wait1 in waitss" :key="wait1.id">
+              <img :src="wait1.img" class="d-block w-100" style="border-radius: 5%" alt="...">
               <div class="carousel-caption d-none d-md-block">
-
-                <h1>Second slide label</h1>
-                <h3>Some representative placeholder content for the second slide.</h3>
-              </div>
-            </div>
-            <div class="carousel-item ">
-              <img src="../assets/R-C.jpg" class="d-block w-100" style="border-radius: 5%" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-
-                <h1>Third slide label</h1>
-                <h3>Some representative placeholder content for the third slide.</h3>
+                <h1>最后出现地点：{{ wait1.addr }}</h1>
+                <h3>症状：{{ wait1.sym }}</h3>
               </div>
             </div>
           </div>
@@ -57,25 +48,27 @@
             <label for="edit-post" class="form-label">
               <h3>发表待救助动物</h3>
             </label>
-            <div class="mb-3">
-              <label for="formFile" class="form-label"></label>
-              <input class="form-control" type="file" id="formFile" accept="image/*">
-
-            </div>
-            <div class="mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">出现地点</label>
-              <div class="col-sm-10">
-                <input type="text" v-model="address" class="form-control">
+            <form @submit.prevent="fill">
+              <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">照片URL</label>
+                <div class="col-sm-10">
+                  <input type="text" v-model="pho" class="form-control">
+                </div>
               </div>
-            </div>
-            <div class="mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">症状</label>
-              <div class="col-sm-10">
-                <input type="text" v-model="symptom" class="form-control">
+              <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">出现地点</label>
+                <div class="col-sm-10">
+                  <input type="text" v-model="loc" class="form-control">
+                </div>
               </div>
-            </div>
-            <button type="button" class="btn btn-primary" style="letter-spacing: 5px">发帖</button>
-            <!-- @click="post_a_post" -->
+              <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">症状</label>
+                <div class="col-sm-10">
+                  <input type="text" v-model="ill" class="form-control">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" style="letter-spacing: 5px">发帖</button>
+            </form>
           </div>
         </div>
       </div>
@@ -86,21 +79,61 @@
 
 <script>
 import { ref } from 'vue';
+import $ from 'jquery';
 import UNavBar from '../components/UNavBar';
 export default {
   name: 'HomeView',
   components: {
     UNavBar,
   },
-  setup()
-  {
-    let address = ref();
-    let img =ref();
-    let symptom = ref();
+  setup () {
+    let loc = ref();
+    let pho = ref();
+    let ill = ref();
+    let waits = ref([]);
+    let waitss = ref([]);
+    let message = ref();
+    $.ajax({
+      url: 'http://127.0.0.1:8000/homeview/',
+      type: "get",
+      success (resp) {
+        waits.value = resp;
+        // waitss.value =resp.anii;
+        // alert(message.value);
+      }
+    });
+    $.ajax({
+      url: 'http://127.0.0.1:8000/homeview1/',
+      type: "get",
+      success (resp) {
+        // waits.value = resp.ani;
+        waitss.value = resp;
+        // alert(message.value);
+      }
+    });
+    const fill = () => {
+      $.ajax({
+        url: "http://127.0.0.1:8000/rhomeview/",
+        type: "POST",
+        data: {
+          loc: loc.value,
+          ill: ill.value,
+          pho: pho.value,
+        },
+        success (resp) {
+          message.value = resp.result;
+          alert(message.value);
+          window.location.reload();
+        }
+      })
+    }
     return {
-      img,
-      symptom,
-      address
+      loc,
+      pho,
+      ill,
+      waits,
+      waitss,
+      fill
     }
   },
 }

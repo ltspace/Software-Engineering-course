@@ -1,11 +1,12 @@
+from ast import Num
 from django.contrib.auth.models import User
 from django.db import models
 
 
 class AdoptInfo(models.Model):
-    用户名 = models.CharField(db_column='用户名',max_length=50,default="admin")
+    用户名 = models.CharField(db_column='用户名', max_length=50, default="admin")
     领养日期 = models.DateTimeField()
-    动物id = models.IntegerField(db_column='动物ID') 
+    动物id = models.IntegerField(db_column='动物ID')
     领养单编号 = models.AutoField(primary_key=True)
     领养状态 = models.CharField(max_length=50)
     合照 = models.TextField(blank=True, null=True)
@@ -17,9 +18,9 @@ class AdoptInfo(models.Model):
 
 class AnimalInfo(models.Model):
     动物id = models.AutoField(db_column='动物ID', primary_key=True)
-    name = models.CharField(max_length=10 ,default="旺仔")
+    name = models.CharField(max_length=10, default="旺仔")
     cd = models.CharField(max_length=10)
-    age = models.CharField(max_length=11,blank=True, null=True)
+    age = models.CharField(max_length=11, blank=True, null=True)
     photo = models.TextField(blank=True, null=True)
     type = models.CharField(max_length=11)
     fur = models.CharField(max_length=11)
@@ -40,7 +41,8 @@ class AssistInfo(models.Model):
     动物id = models.IntegerField(db_column='动物ID')
     救助日期 = models.DateTimeField()
     救助单编号 = models.AutoField(primary_key=True)
-    用户名 = models.CharField(db_column='用户名',max_length=20,default="admin")  # Field name made lowercase.
+    # Field name made lowercase.
+    用户名 = models.CharField(db_column='用户名', max_length=20, default="admin")
 
     class Meta:
         managed = True
@@ -81,3 +83,15 @@ class UserInfo(models.Model):
         return str(self.user)
 
 
+class WaitAdopt(models.Model):
+    num = models.AutoField(primary_key=True)
+    ill = models.CharField(max_length=256)
+    loc = models.CharField(max_length=256)
+    pho = models.URLField(max_length=256)
+
+    class Meta:
+        managed = True
+        db_table = 'wait_adopt'
+
+    def __str__(self):
+        return str(self.user)

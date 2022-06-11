@@ -35,6 +35,9 @@ from acatdog.views.selectassist import AssOne
 from acatdog.views.changepwd import ChangePwd
 from acatdog.views.adoptsuccess import AdoSuccess
 from acatdog.views.adoptfail import AdoFail
+from acatdog.views.rhomeview import RHomeView
+from acatdog.views.homeview import HomeView
+from acatdog.views.homeview1 import HomeView1
 from django.urls import path, include
 from re import template
 from tempfile import tempdir
@@ -60,6 +63,9 @@ urlpatterns = [
     path('anione/', AniOne.as_view(), name="anione"),
     path('adoone/', AdoOne.as_view(), name="adoone"),
     path('assone/', AssOne.as_view(), name="assone"),
+    path('rhomeview/', RHomeView.as_view(), name="rhomeview"),
+    path('homeview/', HomeView.as_view(), name="homeview"),
+    path('homeview1/', HomeView1.as_view(), name="homeview1"),
     path('selectadopt/', AdoptList.as_view(), name="selectadopt"),
     path('adosucc/', AdoSuccess.as_view(), name="adosucc"),
     path('adofail/', AdoFail.as_view(), name="adofail"),

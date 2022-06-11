@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import AdoptInfo, AnimalInfo, AssistInfo, UserInfo, ManagerInfo
+from .models import AdoptInfo, AnimalInfo, AssistInfo, UserInfo, ManagerInfo, WaitAdopt
 
 
 class UserInfoSerializers(serializers.ModelSerializer):
@@ -13,17 +13,26 @@ class AssistInfoSerializers(serializers.ModelSerializer):
         model = AssistInfo
         fields = '__all__'
 
+
 class AnimalInfoSerializers(serializers.ModelSerializer):
     class Meta:
         model = AnimalInfo
         fields = '__all__'
+
 
 class AdoptInfoSerializers(serializers.ModelSerializer):
     class Meta:
         model = AdoptInfo
         fields = '__all__'
 
+
 class ManagerInfoSerializers(serializers.ModelSerializer):
     class Meta:
         model = ManagerInfo
+        fields = '__all__'
+
+
+class WaitAdoptSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = WaitAdopt
         fields = '__all__'
