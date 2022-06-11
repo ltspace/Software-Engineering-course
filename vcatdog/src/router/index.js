@@ -5,7 +5,6 @@ import AdminLoginView from '../views/AdminLogin.vue'
 import ContactUs from '../views/ContactUs'
 import UserRegister from '../views/UserRegister.vue'
 import AnimalShow from '../views/AnimalShow.vue'
-// import ImproveInfo from '../views/ImproveInfo.vue'
 import ChangePwd from '../views/ChangePwd.vue'
 import PersonalInfo from '../views/PersonalInfo.vue'
 import FillHelpForm from '../views/FillHelpForm.vue'
@@ -13,14 +12,6 @@ import ViewHelpForm from '../views/ViewHelpForm.vue'
 import AdoptionInfo from '../views/AdoptionInfo.vue'
 import NotFound from '../views/NotFound.vue'
 import AssistAni from '../views/AssitAni.vue'
-// import AdminShow from '../views/AdminShow.vue'
-// import AdminCheck from '../views/AdminCheck.vue'
-// import AdminModify from '../views/AdminModify.vue'
-// import AnimalCheck from '../views/AnimalCheck.vue'
-// import AnimalModify from '../views/AnimalModify.vue'
-import UserCheck from '../views/UserCheck.vue'
-import UserCheck1 from '../views/UserCheck1.vue'
-import UserModify from '../views/UserModify.vue'
 import AniShow from '../views/AniShow.vue';
 import AdoptionForm from '../views/AdoptionForm.vue';
 import AdoptFormView from '../views/Adoptformview.vue'
@@ -105,41 +96,6 @@ const routes = [
     name: 'assistani',
     component: AssistAni
   },
-//   {
-//     path: '/admincheck',
-//     name: 'admincheck',
-//     component: AdminCheck
-//   },
-//   {
-//     path: '/adminModify',
-//     name: 'adminModify',
-//     component: AdminModify
-//   },
-  // {
-  //   path: '/animalCheck',
-  //   name: 'animalCheck',
-  //   component: AnimalCheck
-  // },
-  // {
-  //   path: '/animalModify',
-  //   name: 'animalModify',
-  //   component: AnimalModify
-  // },
-  {
-    path: '/userCheck',
-    name: 'userCheck',
-    component: UserCheck
-  },
-  {
-    path: '/userCheck1',
-    name: 'userCheck1',
-    component: UserCheck1
-  },
-  {
-    path: '/userModify',
-    name: 'userModify',
-    component: UserModify
-  },
   {
     path: '/anishow',
     name: 'anishow',
@@ -149,12 +105,7 @@ const routes = [
   {
     path: '/:catchAll(.*)',
     redirect:"/404"
-  },
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
-  // },  
+  }, 
 ]
 
 const router = createRouter({

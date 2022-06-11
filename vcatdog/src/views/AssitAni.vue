@@ -89,8 +89,6 @@ export default {
     let cd = ref();
     let jveyu = ref();
     let can_adopt = ref();
-    // let status = ref();
-    // let username = ref();
     let day = ref();
     const route = useRoute();
     const aniid = route.params.aniid;

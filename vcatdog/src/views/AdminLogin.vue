@@ -1,18 +1,97 @@
 <template>
-  <AdLoginForm>
+  <!-- <link rel="stylesheet" media="screen" href="bootstrap/dist/css/bootstrap.min.css"> -->
+  <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+  <div class="container center-in-center">
+    <div class="row">
+      <div class="col-md-4 center-in-center">
+        <form action="" role="form">
+          <fieldset>
+            <div class="head container col-md-11">
+              <h4>
+                <img src="../assets/logo.png" alt="" width="60" />&nbsp;
+                流浪猫狗领养救助平台
+              </h4>
+              <label class="slogan">Hold
+                out our hands, leave a love, and keep a life</label>
+            </div>
+            <div class="zu1">
+              <button type="submit" class="btn col-md-6">
+                <router-link :to="{name:'userlogin'}" style="text-decoration: none">用户登录</router-link>
+              </button>
 
-  </AdLoginForm>
+              <button type="submit" class="btn col-md-6">
+                <router-link :to="{name:'adminlogin'}" style="text-decoration: none ;color:black">管理员登陆</router-link>
+              </button>
+            </div>
+            <div class="form-group zu2">
+              <input type="text" class="form-control" placeholder="工号" />
+            </div>
+            <div class="form-group zu2">
+              <input type="password" class="form-control" placeholder="Password" />
+            </div>
+          </fieldset>
+          <label for="" class="padd zu2"><a href="" style="text-decoration: none">忘记密码</a></label>
+          <div class="container-fluid" style="text-align: center">
+            <a type="submit" class="btn btn-primary col-md-12" href="/admin">
+              &nbsp;&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;&nbsp;&nbsp;&nbsp;
+            </a>
+          </div>
+          <label for="" class="zu3 padd zu2"><a href="" style="text-decoration: none"></a></label>
+        </form>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script scoped>
-import AdLoginForm from '../components/AdLoginForm';
 export default {
   name: 'AdminLoginView',
   components: {
-    AdLoginForm
   }
 }
 </script>
 
-<style>
+<style scoped>
+.center-in-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.zu1 {
+  padding-top: 7em;
+  padding-bottom: 3.5em;
+}
+
+.zu2 {
+  padding-bottom: 10px;
+}
+
+.zu3 {
+  padding-top: 2em;
+}
+
+.head {
+  transform: scale(1, 1.1);
+  text-align: center;
+}
+
+
+.slogan {
+  font-size: 1px;
+  color: grey;
+  transform: scale(1, 1.1);
+}
+
+.padd {
+  /* padding-top: 5px; */
+  /* padding-bottom: 1em; */
+  padding-left: 20em;
+  font-weight: normal;
+}
 </style>
